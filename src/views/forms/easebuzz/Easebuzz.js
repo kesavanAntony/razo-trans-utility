@@ -17,7 +17,7 @@ const Easebuzz = () => {
             <Form className="m-4 ">
               <Form.Group className="mb-3 fw-medium" controlId="formGroupEmail">
                 <Form.Label>Mobile Number</Form.Label>
-                <Form.Control type="text" placeholder="Enter mobile number" className="fw-medium" />
+                <Form.Control type="number" placeholder="Enter mobile number" className="fw-medium" />
               </Form.Group>
             </Form>
             <div className="text-center">

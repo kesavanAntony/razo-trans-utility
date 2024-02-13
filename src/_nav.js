@@ -127,23 +127,22 @@ const _nav = [
   {
     component: CNavGroup,
     name: 'Bill Payment',
-    to: '/buttons',
     icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
         name: 'Electricity',
-        to: '/buttons/buttons',
+        to: '/buttons/electricity',
       },
       {
         component: CNavItem,
         name: 'Postpaid',
-        to: '/buttons/button-groups',
+        to: '/buttons/postpaid',
       },
       {
         component: CNavItem,
         name: 'Water',
-        to: '/buttons/dropdowns',
+        to: '/buttons/water',
       },
       {
         component: CNavItem,

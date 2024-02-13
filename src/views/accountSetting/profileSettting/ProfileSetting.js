@@ -62,7 +62,7 @@ const ProfileSetting = () => {
                   <option>Orissa</option>
                   <option>Punjab</option>
                   <option>Rajasthan</option>
-                  <option defaultChecked>Tamilnadu</option>
+                  <option>Tamilnadu</option>
                   <option>UP East</option>
                   <option>UP West</option>
                   <option>West Pengal</option>

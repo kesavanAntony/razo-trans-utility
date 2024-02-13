@@ -21,9 +21,9 @@ const Tables = React.lazy(() => import('./views/base/tables/Tables'))
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'))
 
 // Buttons
-const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'))
-const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'))
-const Dropdowns = React.lazy(() => import('./views/buttons/dropdowns/Dropdowns'))
+const Electricity = React.lazy(() => import('./views/buttons/electricity/Electricity'))
+const Postpaid = React.lazy(() => import('./views/buttons/postpaid/Postpaid'))
+const Water = React.lazy(() => import('./views/buttons/water/Water'))
 
 //Forms
 const MDMT = React.lazy(() => import('./views/forms/mdmt/MDMT'))
@@ -94,10 +94,10 @@ const routes = [
   { path: '/base/spinners', name: 'Spinners', element: Spinners },
   { path: '/base/tables', name: 'Tables', element: Tables },
   { path: '/base/tooltips', name: 'Tooltips', element: Tooltips },
-  { path: '/buttons', name: 'Buttons', element: Buttons, exact: true },
-  { path: '/buttons/buttons', name: 'Buttons', element: Buttons },
-  { path: '/buttons/dropdowns', name: 'Dropdowns', element: Dropdowns },
-  { path: '/buttons/button-groups', name: 'Button Groups', element: ButtonGroups },
+  // { path: '/buttons', name: 'Buttons', element: Buttons, exact: true },
+  { path: '/buttons/electricity', name: 'Electricity', element: Electricity },
+  { path: '/buttons/postpaid', name: 'Postpaid', element: Postpaid },
+  { path: '/buttons/water', name: 'Water', element: Water },
   { path: '/charts', name: 'Charts', element: Charts },
   // { path: '/forms', name: 'Forms', element: FormControl, exact: true },
   { path: '/forms/runpaisa', name: 'Runpaisa-Payout', element: Runpaisa },
