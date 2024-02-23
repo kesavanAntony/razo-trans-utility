@@ -72,56 +72,7 @@ const _nav = [
         name: 'Caple TV',
         to: '/base/carousels',
       },
-      // {
-      //   component: CNavItem,
-      //   name: 'Collapse',
-      //   to: '/base/collapses',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'List group',
-      //   to: '/base/list-groups',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Navs & Tabs',
-      //   to: '/base/navs',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Pagination',
-      //   to: '/base/paginations',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Placeholders',
-      //   to: '/base/placeholders',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Popovers',
-      //   to: '/base/popovers',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Progress',
-      //   to: '/base/progress',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Spinners',
-      //   to: '/base/spinners',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Tables',
-      //   to: '/base/tables',
-      // },
-      // {
-      //   component: CNavItem,
-      //   name: 'Tooltips',
-      //   to: '/base/tooltips',
-      // },
+    
     ],
   },
   {
@@ -250,10 +201,7 @@ const _nav = [
         component: CNavItem,
         name: 'Load Wallet',
         to: '/icons/loadWallet',
-        // badge: {
-        //   color: 'success',
-        //   text: 'NEW',
-        // },
+     
       },
       {
         component: CNavItem,

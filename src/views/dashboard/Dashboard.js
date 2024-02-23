@@ -1,9 +1,12 @@
 import { cilCheck, cilPhone, cilReload, cilXCircle } from '@coreui/icons'
 import React from 'react'
-import {  Col, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import CIcon from '@coreui/icons-react'
 
+
 const Dashboard = () => {
+
+
   return (
     <>
       <div>
@@ -427,22 +430,22 @@ const Dashboard = () => {
                   </thead>
                   <tbody>
                     <tr className="border">
-                      <td className='p-2'>#</td>
+                      <td className="p-2">#</td>
                       <td>Wallet Type</td>
                       <td>Amount</td>
                     </tr>
                     <tr className="border">
-                      <td className='p-2'>₹</td>
+                      <td className="p-2">₹</td>
                       <td>Utility Balance</td>
                       <td>1198.66</td>
                     </tr>
                     <tr className="border">
-                      <td className='p-2'>₹</td>
+                      <td className="p-2">₹</td>
                       <td>Aeps Balance</td>
                       <td>1198.66</td>
                     </tr>
                     <tr className="border">
-                      <td className='p-2'>₹</td>
+                      <td className="p-2">₹</td>
                       <td>Microatm Balance</td>
                       <td>0</td>
                     </tr>

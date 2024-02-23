@@ -7,9 +7,22 @@ import Button from 'react-bootstrap/Button'
 import React,{useState} from 'react'
 import { cilPlus} from '@coreui/icons'
 import Modal from 'react-bootstrap/Modal';
+import { CForm, CFormInput } from '@coreui/react'
 
 const Easebuzz= () => {
+
   const [lgShow, setLgShow] = useState(false)
+  const [validated, setValidated] = useState(false)
+  
+  const handleSubmit = (event) =>{
+
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    setValidated(true)
+  }
   return (
     <div>
        <Navbar expand="lg" className="bg-body-tertiary">
@@ -133,6 +146,8 @@ const Easebuzz= () => {
         <Modal.Header closeButton className='bg-secondary text-light'>
           <Modal.Title id="example-modal-sizes-title-lg" >Wallet Fund Request</Modal.Title>
         </Modal.Header>
+        <CForm noValidate validated={validated}
+           onSubmit={handleSubmit}>
         <Modal.Body>
           <Row>
           <Col md={4} sm={12}>
@@ -140,20 +155,20 @@ const Easebuzz= () => {
             <div className="p-2">
             <label className="h6 w-100">Mobile</label>
             <div>
-            <input
+            <CFormInput
                 type="text"
                 placeholder="Enter Mobile"
-                className="rounded fw-medium text-black w-100"
+                className="rounded fw-medium text-black w-100" required
               />  
               </div>
             </div>
             <div className="p-2">
                <label className="h6 w-100">Remark</label>
             <div>
-              <input
+              <CFormInput
                 type="text"
                 placeholder="Enter Remark"
-                className="rounded fw-medium text-black"
+                className="rounded fw-medium text-black" required
               />
             </div>
             </div>
@@ -162,10 +177,10 @@ const Easebuzz= () => {
             <div className="p-2">
                <label className="h6 w-100">Amount</label>
             <div>
-              <input
+              <CFormInput
                 type="text"
                 placeholder="Enter Amount"
-                className="rounded fw-medium text-black"
+                className="rounded fw-medium text-black" required
               />
             </div>
             </div>
@@ -175,10 +190,10 @@ const Easebuzz= () => {
           <div className="p-2">
                <label className="h6 w-100">Email</label>
             <div>
-              <input
+              <CFormInput
                 type="text"
                 placeholder="Enter Email"
-                className="rounded fw-medium text-black"
+                className="rounded fw-medium text-black" required
               />
             </div>
             </div>
@@ -188,9 +203,10 @@ const Easebuzz= () => {
          
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Cancel</Button>
-          <Button variant="primary">Submit</Button>
+          <Button variant="secondary"  onClick={() => setLgShow(false)}>Cancel</Button>
+          <Button variant="primary" type='submit'>Submit</Button>
         </Modal.Footer>
+        </CForm>
       </Modal>
     {/* modal */}
     </div>

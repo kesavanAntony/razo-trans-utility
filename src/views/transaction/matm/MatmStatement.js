@@ -73,8 +73,10 @@ const MatmStatement = () => {
               <div> <label className="p-2 h6">Status</label></div>
              <div><select className="rounded fw-medium h-30 p-1 border-2">
              <option >Select Report Status</option>
+             <option>Complete</option>
                 <option>Success</option>
                 <option>Pending</option>
+                <option>Failed</option>
                 <option>Reserved</option>
               </select></div>
               

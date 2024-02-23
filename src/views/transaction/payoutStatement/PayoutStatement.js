@@ -74,10 +74,9 @@ const PayoutStatement = () => {
              <div><select className="rounded fw-medium h-30 p-1 border-2">
                 <option disabled>Select Fund Status</option>
                 <option>Success</option>
-                <option>Failed</option>
                 <option>Pending</option>
-                <option>Apporoved</option>
-                <option>Rejected</option>
+                <option>Reversed</option>
+              
               </select></div>
               
             </Col>

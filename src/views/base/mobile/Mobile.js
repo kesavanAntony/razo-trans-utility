@@ -1,12 +1,57 @@
 import CIcon from '@coreui/icons-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Row,Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import { NavLink } from 'react-router-dom'
 import { cilCursor } from '@coreui/icons'
 import Table from 'react-bootstrap/Table'
-import { CButton } from '@coreui/react'
+import { CButton, CFormFeedback } from '@coreui/react'
+import { useState } from 'react'
+import axios from 'axios'
+
 const Mobile = () => {
+
+  const [validated, setValidated] = useState(false)
+  const [list,updateList] = useState([])
+  const [value,setValue]=useState({
+    circle:"",
+    operator:"",
+    mobileNumber:"",
+    rechargeAmount:"",
+    tpin:""
+  })
+
+  useEffect(()=>{
+  axios.get('http://localhost:4000/list/mobile/recharge')
+  .then((res)=>{
+  const result = res.data;
+  updateList(result)
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
+  },[])
+
+  const onHandle = (e) =>{
+   setValue({...value,[e.target.name]:e.target.value})
+  }
+  const handleSubmit = (event) =>{
+
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+   
+      setValidated(true)
+      axios.post('http://localhost:4000/mobile/recharge',value)
+      .then(res => {
+        console.log(res.data)
+        alert("")
+      })
+       .catch(err => console.log(err))  
+    }
+
   return (
     <div>
       <Row className="m-2">
@@ -15,11 +60,12 @@ const Mobile = () => {
             <div className="fw-bold text-light bg-black p-2  rounded-2">
               <h5>Mobile Recharge</h5>
             </div>
-            <Form className="m-4 border-bottom">
+            <Form className="m-4 border-bottom" noValidate validated={validated}
+            onSubmit={handleSubmit}>
               <div className="mb-3">
                 <Form.Label className='fw-medium'>Circle</Form.Label>
-                <Form.Select aria-label="Default select example">
-                  <option>Select Circle</option>
+                <Form.Select aria-label="Default select example"  name='circle' required id="validationCustom01" onChange={onHandle}>
+                  <option className='text-secondary'>Select Circle</option>
                   <option>Assam</option>
                   <option>Bihar</option>
                   <option>Chandigarh</option>
@@ -38,51 +84,57 @@ const Mobile = () => {
                   <option>Orissa</option>
                   <option>Punjab</option>
                   <option>Rajasthan</option>
-                  <option defaultChecked>Tamilnadu</option>
+                  <option>Tamilnadu</option>
                   <option>UP East</option>
                   <option>UP West</option>
                   <option>West Pengal</option>
                 </Form.Select>
+                <CFormFeedback invalid>Please provide a valid city.</CFormFeedback>
               </div>
               <div className="mb-3">
                 <Form.Label className='fw-medium'>Mobile Operator</Form.Label>
-                <Form.Select aria-label="Default select example">
-                  <option>Select Operator</option>
-                  <option value="1">VODAFONE</option>
-                  <option value="2">BSNL SPECIAL</option>
-                  <option value="3">TATADOCOMO</option>
-                  <option value="3">TATADOCOMO SPECIAL</option>
-                  <option value="3">JIORECH</option>
-                  <option value="3">IDEA</option>
-                  <option value="3">AIRTEL</option>
+                <Form.Select aria-label="Default select example" name='operator' required id="validationCustom02" onChange={onHandle}>
+                  <option className='text-secondary'>Select Operator</option>
+                  <option >VODAFONE</option>
+                  <option >BSNL SPECIAL</option>
+                  <option >TATADOCOMO</option>
+                  <option >TATADOCOMO SPECIAL</option>
+                  <option >JIORECH</option>
+                  <option >IDEA</option>
+                  <option >AIRTEL</option>
                 </Form.Select>
+                <CFormFeedback invalid>Please provide a valid Operator</CFormFeedback>
               </div>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
+              <Form.Group className="mb-3">
                 <Form.Label className='fw-medium'>Mobile Number</Form.Label>
-                <Form.Control type="text" placeholder="Enter mobile number" />
+                <Form.Control type="number" placeholder="Enter mobile number"  name='mobileNumber'required onChange={onHandle}/>
+                <CFormFeedback invalid>Please Enter your Mobile Number</CFormFeedback>
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupPassword">
+              <Form.Group className="mb-3" >
                 <Form.Label className='fw-medium'>Recharge Amount</Form.Label>
-                <Form.Control type="text" placeholder="Enter mobile amount" />
-                <CButton color="info" className="p" size=''>
+                <Form.Control type="number" placeholder="Enter mobile amount" name='rechargeAmount' required onChange={onHandle}/>
+                <CFormFeedback invalid>Please Enter your Amount</CFormFeedback>
+                <CButton color="info" className="p" >
                   PLAN
                 </CButton>
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupPassword">
+              <Form.Group className="mb-3">
                 <Form.Label className='fw-medium'>T-Pin</Form.Label>
-                <Form.Control type="text" placeholder="Enter transaction pin" />
+                <Form.Control type="text" placeholder="Enter transaction pin" name='tpin' required onChange={onHandle}/>
+                <CFormFeedback invalid>Please Enter your pin</CFormFeedback>
                 <div className="text-end m-0">
                   <NavLink className="text-decoration-none">Generate Or Forgot Pin ??</NavLink>
                 </div>
               </Form.Group>
-            </Form>
-            <div className="text-center">
-              <Button className="text-italic">
+            
+            <div className="text-center p-2">
+              <Button className="text-italic" type="submit">
                 {' '}
                 <CIcon icon={cilCursor} className="me-2" />
                 Pay Now
               </Button>
             </div>
+            </Form>
           </div>
         </Col>
         <Col md={8} sm={12}>
@@ -100,16 +152,25 @@ const Mobile = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                {
+                  list.map((item,index)=>{
+                    return(
+                  <tr key={index}>
+                  <td className='align-middle'>{item.transactionId}
+                  <p>{item.rechargeTime}</p></td>
+                  <td className='align-middle'><h6>Number - {item.mobileNumber}</h6>
+                  <h6>Operator - {item.operator}</h6></td>
+                  <td className='align-middle'><h6>Amount-{item.rechargeAmount}</h6></td>
+                  <td className='align-middle'><button className='bg-success text-light rounded'>Success</button></td>
                 </tr>
+                    )
+                  })
+                }
+              
               </tbody>
             </Table>
             <div className="p-2">
-              <span>Showing of 0 to 0 of entires</span>
+              <span>Showing of 1 to 1 of entires</span>
             </div>
           </div>
         </Col>

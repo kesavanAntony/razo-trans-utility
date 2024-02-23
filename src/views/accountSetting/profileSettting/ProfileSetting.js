@@ -42,8 +42,8 @@ const ProfileSetting = () => {
               <div className="p-2">
               <label className="h6 ">State</label>
               <div>
-                <select className="rounded  w-100 border-2">
-                  <option >Select State</option>
+                <select className="rounded  w-100 border-2" >
+                  <option>Select State</option>
                   <option>Assam</option>
                   <option>Bihar</option>
                   <option>Chandigarh</option>
@@ -62,7 +62,7 @@ const ProfileSetting = () => {
                   <option>Orissa</option>
                   <option>Punjab</option>
                   <option>Rajasthan</option>
-                  <option>Tamilnadu</option>
+                  <option selected>Tamilnadu</option>
                   <option>UP East</option>
                   <option>UP West</option>
                   <option>West Pengal</option>

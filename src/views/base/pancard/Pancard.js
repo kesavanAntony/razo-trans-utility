@@ -82,15 +82,20 @@ const Pancard = () => {
           </div>
         </Col>
       </Row>
-      <Row className="d-flex flex-row justify-content-between">
-        <div className="text-secondary">
+     
+      <div className="d-flex flex-row justify-content-between">
+        <div className="text-secondary col-md-8 col-sm-12">
           <h4>Important T&Cs:</h4>
           <ul>
             <li>The fee for processing PAN application is ₹107 inclusive of GST.</li>
             <li>PAN card application can be processed using eKYC or physical documents.</li>
           </ul>
         </div>
-      </Row>
+        <div className='col-md-8 col-sm-12'>
+          <p className='text-secondary'>Powered By</p>
+          <img src={require ("../pancard/uti.png")}/>
+        </div>
+      </div>
     </div>
   )
 }

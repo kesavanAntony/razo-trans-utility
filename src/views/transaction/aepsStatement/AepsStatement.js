@@ -76,8 +76,8 @@ const AepsStatement = () => {
                 <option>Success</option>
                 <option>Failed</option>
                 <option>Pending</option>
-                <option>Apporoved</option>
-                <option>Rejected</option>
+                <option>Reversed</option>
+                <option>Refunded</option>
               </select></div>
               
             </Col>
@@ -89,7 +89,7 @@ const AepsStatement = () => {
        <div className="shadow p-3 mb-5 bg-white rounded">
          <div className="fw-bold text-light bg-black p-2 rounded d-flex flex-row justify-content-between ">
            <h5 className="align-center">Aeps Statement</h5>
-           <button className="btn btn-light fw-medium rounded"><CIcon icon={cilPlus} className='me-2'/>NEW REQUEST</button>
+           {/* <button className="btn btn-light fw-medium rounded"><CIcon icon={cilPlus} className='me-2'/>NEW REQUEST</button> */}
          </div>
          <Table responsive>
            <thead>

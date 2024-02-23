@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState,useEffect } from 'react'
+import { useNavigate} from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -10,6 +10,7 @@ import {
   CFormInput,
   CInputGroup,
   CInputGroupText,
+  CFormFeedback,
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
@@ -17,42 +18,54 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import axios from 'axios'
 
 const Login = () => {
+  useEffect(() => {
+    axios
+      .get('http://localhost:4000')
+      .then((res) => {
+        if (res.data.valid) {
+          navigate("/dashboard")
+        } else {
+          navigate('/')
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
+  // const [name, setName] = useState('')
 
   const navigate = useNavigate('')
+  const [validated, setValidated] = useState(false)
+  const [value, setValue] = useState('')
 
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
+  const OnHandle = (event) => {
+    setValue({ ...value, [event.target.name]: event.target.value })
+  }
+  axios.defaults.withCredentials = true
+  const goToDashboard = (event) => {
+    event.preventDefault()
 
-  const goToDashboard = async (e) => {
-    e.preventDefault()
-
-    try {
-      const response = await fetch('http://localhost:4000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userName, password }),
-      });
-      const data = await response.json();
-      if(data.message === "Login successful"){
-           navigate("/dashboard")
-           alert(data.message)
-      }
-      else if (data.message === "Invalid credentials"){
-        navigate("")
-        alert("please check credientials")
-      }
-      else{
-        alert("error")
-      }
-      
-    } 
-    catch (error) {
-      alert('Error:', error);
-     
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    } else {
+      setValidated(true)
+      console.log(value)
+      const url = 'http://localhost:4000/login'
+      axios
+        .post(url, value)
+        .then((res) => {
+          if (res.data.Login) {
+            alert('Login Success')
+            navigate('/dashboard')
+          } else {
+            alert('invaild Credientials')
+          }
+        })
+        .catch((err) => alert('invaild Credientials'))
     }
-
   }
 
   return (
@@ -70,7 +83,12 @@ const Login = () => {
           <CCol md={6}>
             <CCard className="p-4">
               <CCardBody>
-                <CForm onSubmit={goToDashboard}>
+                <CForm
+                  onSubmit={goToDashboard}
+                  className="row g-3 needs-validation"
+                  noValidate
+                  validated={validated}
+                >
                   <h1>Login</h1>
                   <p className="text-medium-emphasis"></p>
                   <CInputGroup className="mb-3">
@@ -79,10 +97,11 @@ const Login = () => {
                     </CInputGroupText>
                     <CFormInput
                       placeholder="Username"
-                      autoComplete="username"
                       name="userName"
-                      onChange={(event) => setUserName(event.target.value)}
+                      required
+                      onChange={OnHandle}
                     />
+                    <CFormFeedback invalid>Please choose a username.</CFormFeedback>
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupText>
@@ -91,10 +110,11 @@ const Login = () => {
                     <CFormInput
                       type="password"
                       placeholder="Password"
-                      autoComplete="current-password"
                       name="password"
-                      onChange={(event) => setPassword(event.target.value)}
+                      required
+                      onChange={OnHandle}
                     />
+                    <CFormFeedback invalid>Please choose a Password.</CFormFeedback>
                   </CInputGroup>
                   <CRow>
                     <CCol xs={6}>
@@ -102,11 +122,6 @@ const Login = () => {
                         Login
                       </CButton>
                     </CCol>
-                    {/* <CCol xs={6} className="text-end">
-                        <CButton color="link" className="px-0 text-decoration-none">
-                          Forgot password?
-                        </CButton>
-                      </CCol> */}
                   </CRow>
                 </CForm>
               </CCardBody>

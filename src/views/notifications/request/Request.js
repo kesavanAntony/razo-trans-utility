@@ -8,10 +8,22 @@ import React,{useState} from 'react'
 import CIcon from '@coreui/icons-react'
 import Modal from 'react-bootstrap/Modal'
 import { NavLink } from 'react-router-dom'
-
+import { CFormInput, CFormSelect,CForm } from '@coreui/react'
+import { CFormFeedback } from '@coreui/react'
 
 const Request = () => {
   const [lgShow, setLgShow] = useState(false)
+  const [validated, setValidated] = useState(false)
+  
+  const handleSubmit = (event) =>{
+
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    setValidated(true)
+  }
   return (
     <div>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -143,6 +155,8 @@ const Request = () => {
         onHide={() => setLgShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
       >
+        <CForm noValidate validated={validated}
+           onSubmit={handleSubmit}>
         <Modal.Header closeButton className="bg-secondary text-light">
           <Modal.Title id="example-modal-sizes-title-lg">Wallet Fund Request</Modal.Title>
         </Modal.Header>
@@ -173,36 +187,43 @@ const Request = () => {
     </Table >
           </Row>
           <Row>
+            
             <Col md={4} sm={12}>
               <div className="p-2">
                 <label className="h6 w-100">Account Number</label>
                 <div>
-                  <input
+                  <CFormInput
                     type="text"
                     placeholder="Enter Value"
-                    className="rounded fw-medium text-black w-100"
-                  />
-                </div>
+                    className="rounded fw-medium text-black w-100" required
+                  /><CFormFeedback invalid>This field is required.</CFormFeedback>
+               
+                </div> 
               </div>
               <div className="p-2">
                 <label className="h6 w-100">IFSC Code</label>
                 <div>
-                  <input
+                  <CFormInput
                     type="text"
                     placeholder="Enter Value"
-                    className="rounded fw-medium text-black w-100"
-                  />
+                    className="rounded fw-medium text-black w-100" required
+                  /> 
+                     <CFormFeedback invalid>This field is required.</CFormFeedback>
                 </div>
+            
               </div>
               <div className="p-2">
                 <label className="h6 w-100">Bank Name</label>
                 <div>
-                  <input
+                  <CFormInput
                     type="text"
                     placeholder="Enter Value"
-                    className="rounded fw-medium text-black w-100"
+                    className="rounded fw-medium text-black w-100" required
+                    
                   />
+                 <CFormFeedback invalid>This field is required.</CFormFeedback>
                 </div>
+               
               </div>
             </Col>
             <Col md={4} sm={12}>
@@ -210,44 +231,51 @@ const Request = () => {
                 {' '}
                 <label className="w-100 h6">Wallet Type</label>
                 <div>
-                  <select className="rounded fw-medium border-2 w-100">
-                    <option defaultChecked>Select Wallet</option>
+                  <CFormSelect className="rounded fw-medium border-2 w-100" required>
+                    <option  disabled className='text-seconadry'>Select Wallet</option>
                     <option>Move to Wallet</option>
                     <option>Move to Bank</option>
-                  </select>
+                  </CFormSelect>
+                  <CFormFeedback invalid>Please select request type</CFormFeedback>
                 </div>
+                
               </div>
               <div className="p-2">
                 {' '}
                 <label className="w-100 h6">Transfer Mode</label>
                 <div>
-                  <select className="rounded fw-medium border-2 w-100">
-                    <option defaultChecked>Select Mode</option>
+                  <CFormSelect className="rounded fw-medium border-2 w-100" required>
+                    <option disabled className='text-seconadry'>Select Mode</option>
                     <option>IMPS</option>
                     <option>NEFT</option>
-                  </select>
+                  </CFormSelect>
+                   <CFormFeedback invalid>This field is required.</CFormFeedback>
                 </div>
+               
               </div>
             </Col>
             <Col md={4} sm={12}>
               <div className="p-2">
                 <label className="h6 w-100">Amount</label>
                 <div>
-                  <input
-                    type="text"
+                  <CFormInput
+                    type="number"
                     placeholder="Enter Value"
-                    className="rounded fw-medium text-black w-100"
+                    className="rounded fw-medium text-black w-100" required 
                   />
+                  <CFormFeedback invalid>Please enter request amount</CFormFeedback>
                 </div>
+                
               </div>
               <div className="p-2">
                 <label className="h6 w-100">T-pin</label>
                 <div>
-                  <input
+                  <CFormInput
                     type="text"
                     placeholder="Enter Transaction Pin"
-                    className="rounded fw-medium text-black w-100"
+                    className="rounded fw-medium text-black w-100" required
                   />
+                   <CFormFeedback invalid>This field is required.</CFormFeedback>
                   <div>
                     {' '}
                     <NavLink className="text-decoration-none">Generate Or Forgot Pin??</NavLink>
@@ -264,9 +292,10 @@ const Request = () => {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary">Cancel</Button>
-          <Button variant="primary">Submit</Button>
+          <Button variant="secondary" onClick={() => setLgShow(false)}>Cancel</Button>
+          <Button variant="primary" type='submit'>Submit</Button>
         </Modal.Footer>
+        </CForm>
       </Modal>
       {/* modal */}
     </div>
