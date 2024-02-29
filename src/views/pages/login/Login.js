@@ -33,6 +33,7 @@ const Login = () => {
       })
   }, [])
 
+
   // const [name, setName] = useState('')
 
   const navigate = useNavigate('')
@@ -50,19 +51,20 @@ const Login = () => {
     if (form.checkValidity() === false) {
       event.preventDefault()
       event.stopPropagation()
-    } else {
+    } 
+    else {
       setValidated(true)
       console.log(value)
       const url = 'http://localhost:4000/login'
       axios
         .post(url, value)
         .then((res) => {
-          if (res.data.Login) {
+           if(res.data.Login){
             alert('Login Success')
             navigate('/dashboard')
-          } else {
-            alert('invaild Credientials')
-          }
+           }
+         
+         
         })
         .catch((err) => alert('invaild Credientials'))
     }

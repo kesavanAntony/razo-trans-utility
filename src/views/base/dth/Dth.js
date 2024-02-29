@@ -43,7 +43,11 @@ const Dth = () => {
     }
     setValidated(true)
     axios.post('http://localhost:4000/dth/recharge',value)
-    .then(res => console.log(res.data))
+    .then(res =>{
+      alert("dth recharged successfully")
+      console.log(res.data)
+     })
+    
     .catch(err => console.log(err))  
   }
 
@@ -79,9 +83,9 @@ const Dth = () => {
                 <Form.Label className='fw-medium'>Recharge Amount</Form.Label>
                 <Form.Control type="number" placeholder="Enter dth amount" name='dthAmount' required onChange={onHandle}/>
                 <CFormFeedback invalid>Please Enter your Amount</CFormFeedback>
-                <CButton color="info" className="p" >
-                  PLAN
-                </CButton>
+                <div className='mt-1'>
+               <button className='text-light rounded bg-info border-0'>Plan</button>
+                  </div>
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label className='fw-medium'>T-Pin</Form.Label>

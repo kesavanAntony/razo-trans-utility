@@ -5,9 +5,10 @@ import Form from 'react-bootstrap/Form'
 import { NavLink } from 'react-router-dom'
 import { cilCursor } from '@coreui/icons'
 import Table from 'react-bootstrap/Table'
-import { CButton, CFormFeedback } from '@coreui/react'
+import { CFormFeedback } from '@coreui/react'
 import { useState } from 'react'
 import axios from 'axios'
+
 
 const Mobile = () => {
 
@@ -26,6 +27,7 @@ const Mobile = () => {
   .then((res)=>{
   const result = res.data;
   updateList(result)
+  console.log(result)
   })
   .catch((error)=>{
     console.log(error)
@@ -47,7 +49,7 @@ const Mobile = () => {
       axios.post('http://localhost:4000/mobile/recharge',value)
       .then(res => {
         console.log(res.data)
-        alert("")
+        alert("mobile recharged successfully")
       })
        .catch(err => console.log(err))  
     }
@@ -114,9 +116,10 @@ const Mobile = () => {
                 <Form.Label className='fw-medium'>Recharge Amount</Form.Label>
                 <Form.Control type="number" placeholder="Enter mobile amount" name='rechargeAmount' required onChange={onHandle}/>
                 <CFormFeedback invalid>Please Enter your Amount</CFormFeedback>
-                <CButton color="info" className="p" >
-                  PLAN
-                </CButton>
+                
+                <div className='mt-1'>
+               <button className='text-light rounded bg-info border-0'>Plan</button>
+                  </div>
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label className='fw-medium'>T-Pin</Form.Label>
@@ -128,11 +131,12 @@ const Mobile = () => {
               </Form.Group>
             
             <div className="text-center p-2">
+
               <Button className="text-italic" type="submit">
-                {' '}
                 <CIcon icon={cilCursor} className="me-2" />
                 Pay Now
               </Button>
+           
             </div>
             </Form>
           </div>
