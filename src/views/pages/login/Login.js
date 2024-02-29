@@ -20,7 +20,7 @@ import axios from 'axios'
 const Login = () => {
   useEffect(() => {
     axios
-      .get('http://localhost:4000')
+      .get('https://backend-razo-2.onrender.com')
       .then((res) => {
         if (res.data.valid) {
           navigate("/dashboard")
@@ -55,7 +55,7 @@ const Login = () => {
     else {
       setValidated(true)
       console.log(value)
-      const url = 'http://localhost:4000/login'
+      const url = 'https://backend-razo-2.onrender.com/login'
       axios
         .post(url, value)
         .then((res) => {

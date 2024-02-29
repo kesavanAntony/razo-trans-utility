@@ -23,7 +23,7 @@ const Mobile = () => {
   })
 
   useEffect(()=>{
-  axios.get('http://localhost:4000/list/mobile/recharge')
+  axios.get('https://backend-razo-2.onrender.com/list/mobile/recharge')
   .then((res)=>{
   const result = res.data;
   updateList(result)
@@ -46,7 +46,7 @@ const Mobile = () => {
     }
    
       setValidated(true)
-      axios.post('http://localhost:4000/mobile/recharge',value)
+      axios.post('https://backend-razo-2.onrender.com/mobile/recharge',value)
       .then(res => {
         console.log(res.data)
         alert("mobile recharged successfully")

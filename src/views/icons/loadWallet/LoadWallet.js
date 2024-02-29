@@ -31,7 +31,7 @@ const LoadWallet = () => {
    }
 
    useEffect(()=>{
-    axios.get('http://localhost:4000/list/loadWallet')
+    axios.get('https://backend-razo-2.onrender.com/list/loadWallet')
     .then((res)=>{
     const result = res.data;
     updateList(result)
@@ -58,7 +58,7 @@ const LoadWallet = () => {
       event.stopPropagation()
     }
     setValidated(true)
-    axios.post('http://localhost:4000/loadWallet',value)
+    axios.post('https://backend-razo-2.onrender.com/loadWallet',value)
     .then(res =>{
       alert("Fund request Added successfully")
       console.log(res.data)
