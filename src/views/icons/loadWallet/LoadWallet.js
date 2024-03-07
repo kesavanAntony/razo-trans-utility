@@ -35,7 +35,7 @@ const LoadWallet = () => {
     .then((res)=>{
     const result = res.data;
     updateList(result)
-    console.log(list)
+ 
     })
     .catch((error)=>{
       console.log(error)

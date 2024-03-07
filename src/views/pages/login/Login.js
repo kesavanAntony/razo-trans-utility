@@ -20,23 +20,26 @@ import axios from 'axios'
 const Login = () => {
 
 
-    const navigate = useNavigate('')
+    const navigate = useNavigate('');
+
   useEffect(() => {
-    axios
-      .get('https://backend-razo.vercel.app')
-      .then((res) => {
-        if (res.data.valid) {
-          navigate("/dashboard")
-        } else {
-          navigate('/')
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    loadRender();
   }, [])
 
-
+const loadRender = () =>{
+  axios
+  .get('https://backend-razo.vercel.app')
+  .then((res) => {
+    if (res.data.valid) {
+      navigate("/dashboard")
+    } else {
+      navigate('/')
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
   // const [name, setName] = useState('')
 
 
