@@ -23,7 +23,7 @@ const Login = () => {
     const navigate = useNavigate('')
   useEffect(() => {
     axios
-      .get('http://localhost:4000')
+      .get('https://backend-razo.vercel.app')
       .then((res) => {
         if (res.data.valid) {
           navigate("/dashboard")
@@ -58,7 +58,7 @@ const Login = () => {
     else {
       setValidated(true)
       console.log(value)
-      const url = 'http://localhost:4000/login'
+      const url = 'https://backend-razo.vercel.app/login'
       axios
         .post(url, value)
         .then((res) => {
