@@ -31,7 +31,7 @@ const LoadWallet = () => {
    }
 
    useEffect(()=>{
-    axios.get('https://backend-razo-2.onrender.com/list/loadWallet')
+    axios.get('http://localhost:4000/list/loadWallet')
     .then((res)=>{
     const result = res.data;
     updateList(result)
@@ -58,7 +58,7 @@ const LoadWallet = () => {
       event.stopPropagation()
     }
     setValidated(true)
-    axios.post('https://backend-razo-2.onrender.com/loadWallet',value)
+    axios.post('http://localhost:4000/loadWallet',value)
     .then(res =>{
       alert("Fund request Added successfully")
       console.log(res.data)
@@ -305,7 +305,7 @@ const LoadWallet = () => {
             <div className="p-2">
             <label className="h6 w-100">Pay Slip (Optional)</label>
             <div className="p-2">
-              <CFormInput type='file' className='rounded' required onChange={uploadImage} name='paySlip'/>
+              <CFormInput type='file' className='rounded' onChange={uploadImage} name='paySlip'/>
             </div>
             <CFormFeedback invalid>Please Select file</CFormFeedback>
             </div>

@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import { NavLink } from 'react-router-dom'
 import { cilCursor } from '@coreui/icons'
 import Table from 'react-bootstrap/Table'
-import { CButton, CFormFeedback } from '@coreui/react'
+import {  CFormFeedback } from '@coreui/react'
 import axios from 'axios'
 
 const Dth = () => {
@@ -21,7 +21,7 @@ const Dth = () => {
   })
   
   useEffect(()=>{
-    axios.get('https://backend-razo-2.onrender.com/list/dth/recharge')
+    axios.get('http://localhost:4000/list/dth/recharge')
     .then((res)=>{
     const result = res.data;
     updateList(result)
@@ -42,7 +42,7 @@ const Dth = () => {
       event.stopPropagation()
     }
     setValidated(true)
-    axios.post('https://backend-razo-2.onrender.com/dth/recharge',value)
+    axios.post('http://localhost:4000/dth/recharge',value)
     .then(res =>{
       alert("dth recharged successfully")
       console.log(res.data)
@@ -56,7 +56,7 @@ const Dth = () => {
       <Row className="m-2">
       <Col md={4} sm={12} className="">
           <div className="shadow p-3 mb-5 bg-white rounded">
-            <div className="fw-bold text-light bg-black p-2  rounded-2">
+           <div className="fw-bold text-light bg-black p-2  rounded-2">
               <h5>Dth Recharge</h5>
             </div>
             <Form className="m-4 border-bottom" noValidate validated={validated}

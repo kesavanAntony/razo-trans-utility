@@ -18,9 +18,12 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import axios from 'axios'
 
 const Login = () => {
+
+
+    const navigate = useNavigate('')
   useEffect(() => {
     axios
-      .get('https://backend-razo-2.onrender.com')
+      .get('http://localhost:4000')
       .then((res) => {
         if (res.data.valid) {
           navigate("/dashboard")
@@ -36,7 +39,7 @@ const Login = () => {
 
   // const [name, setName] = useState('')
 
-  const navigate = useNavigate('')
+
   const [validated, setValidated] = useState(false)
   const [value, setValue] = useState('')
 
@@ -55,7 +58,7 @@ const Login = () => {
     else {
       setValidated(true)
       console.log(value)
-      const url = 'https://backend-razo-2.onrender.com/login'
+      const url = 'http://localhost:4000/login'
       axios
         .post(url, value)
         .then((res) => {
