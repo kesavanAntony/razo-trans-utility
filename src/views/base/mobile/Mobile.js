@@ -26,7 +26,7 @@ const Mobile = () => {
 
   useEffect(() => {
     axios
-      .get('https://backend-razo.vercel.app/list/mobile/recharge')
+      .get('https://backend-razo.vercel.app//list/mobile/recharge')
       .then((res) => {
         const result = res.data
         updateList(result)
@@ -54,7 +54,7 @@ const Mobile = () => {
       console.log(value)
 
       axios
-        .post('https://backend-razo.vercel.app/order', value)
+        .post('https://backend-razo.vercel.app//order', value)
         .then((res) => {
           const result = res.data
           console.log(result)
@@ -72,7 +72,7 @@ const Mobile = () => {
               const body = {
                 ...response,
               }
-              const validateRes = await fetch('https://backend-razo.vercel.app/order/validate', {
+              const validateRes = await fetch('https://backend-razo.vercel.app//order/validate', {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {
@@ -148,7 +148,7 @@ const Mobile = () => {
 
   // setValidated(true)
   // console.log(value)
-  // axios.post('https://backend-razo.vercel.app/order',value)
+  // axios.post('https://backend-razo.vercel.app//order',value)
   // .then(res => {
   //   const result = res.data;
   //   console.log(result)
@@ -157,7 +157,7 @@ const Mobile = () => {
   //  .catch(err => console.log(err))
 
   // const paymenthandler =async (e) =>{
-  // const response = await fetch("https://backend-razo.vercel.app/order",{
+  // const response = await fetch("https://backend-razo.vercel.app//order",{
   //   method:"POST",
   //   body:JSON.stringify({
   //     amount,
@@ -183,7 +183,7 @@ const Mobile = () => {
   //        const body ={
   //         ...response
   //        };
-  //        const validateRes = await fetch("https://backend-razo.vercel.app/order/validate",{
+  //        const validateRes = await fetch("https://backend-razo.vercel.app//order/validate",{
   //         method:"POST",
   //         body:JSON.stringify(body),
   //         headers :{
@@ -221,7 +221,7 @@ const Mobile = () => {
   //        e.preventDefault();
 
   //   setValidated(true)
-  //   axios.post('https://backend-razo.vercel.app/mobile/recharge',value)
+  //   axios.post('https://backend-razo.vercel.app//mobile/recharge',value)
   //   .then(res => {
   //     console.log(res.data)
   //     alert("mobile recharged successfully")
@@ -247,7 +247,7 @@ const Mobile = () => {
                   onChange={onHandle}
                   value={value.circle}
                 >
-                  <option className="text-secondary" disabled>
+                  <option className="text-secondary" >
                     Select Circle
                   </option>
                   <option>Assam</option>
@@ -284,7 +284,7 @@ const Mobile = () => {
                   onChange={onHandle}
                   value={value.operator}
                 >
-                  <option className="text-secondary" disabled>
+                  <option className="text-secondary">
                     Select Operator
                   </option>
                   <option>VODAFONE</option>

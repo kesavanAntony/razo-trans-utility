@@ -10,7 +10,6 @@ import {
   CFormInput,
   CInputGroup,
   CInputGroupText,
-  CFormFeedback,
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
@@ -28,7 +27,7 @@ const Login = () => {
 
 const loadRender = () =>{
   axios
-  .get('https://backend-razo.vercel.app')
+  .get('https://backend-razo.vercel.app/')
   .then((res) => {
     if (res.data.valid) {
       navigate("/dashboard")
@@ -43,15 +42,30 @@ const loadRender = () =>{
   // const [name, setName] = useState('')
 
 
-  const [validated, setValidated] = useState(false)
+  const [validated,setValidated] = useState({}) 
   const [value, setValue] = useState('')
 
   const OnHandle = (event) => {
     setValue({ ...value, [event.target.name]: event.target.value })
   }
+
   axios.defaults.withCredentials = true
+
   const goToDashboard = (event) => {
     event.preventDefault()
+    
+  //   const errors={}
+  //   if(!value.userName.trim()){
+  //    errors.userName = "username required"
+  //   }
+  //   if(!value.password.trim()){
+  //     errors.password = "password required"
+  //   }
+  //  updateFormError(errors)
+  //  if(Object.keys(errors).length===0){
+
+       
+  //  }
 
     const form = event.currentTarget
     if (form.checkValidity() === false) {
@@ -61,7 +75,7 @@ const loadRender = () =>{
     else {
       setValidated(true)
       console.log(value)
-      const url = 'https://backend-razo.vercel.app/login'
+     const url = 'https://backend-razo.vercel.app//login'
       axios
         .post(url, value)
         .then((res) => {
@@ -92,10 +106,9 @@ const loadRender = () =>{
             <CCard className="p-4">
               <CCardBody>
                 <CForm
-                  onSubmit={goToDashboard}
+                  onSubmit={goToDashboard} validated
                   className="row g-3 needs-validation"
-                  noValidate
-                  validated={validated}
+                
                 >
                   <h1>Login</h1>
                   <p className="text-medium-emphasis"></p>
@@ -109,7 +122,7 @@ const loadRender = () =>{
                       required
                       onChange={OnHandle}
                     />
-                    <CFormFeedback invalid>Please choose a username.</CFormFeedback>
+                   {/* <CFormFeedback className="text-danger fw-medium"></CFormFeedback> */}
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupText>
@@ -122,7 +135,7 @@ const loadRender = () =>{
                       required
                       onChange={OnHandle}
                     />
-                    <CFormFeedback invalid>Please choose a Password.</CFormFeedback>
+                        {/* {formError.password && <CFormFeedback className="text-danger fw-medium">{formError.password}</CFormFeedback>} */}
                   </CInputGroup>
                   <CRow>
                     <CCol xs={6}>
