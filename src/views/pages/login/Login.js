@@ -27,7 +27,7 @@ const Login = () => {
 
 const loadRender = () =>{
   axios
-  .get('https://backend-razo.vercel.app/')
+  .get('https://backend-razo.vercel.app')
   .then((res) => {
     if (res.data.valid) {
       navigate("/dashboard")
@@ -75,7 +75,7 @@ const loadRender = () =>{
     else {
       setValidated(true)
       console.log(value)
-     const url = 'https://backend-razo.vercel.app//login'
+     const url = 'https://backend-razo.vercel.app/login'
       axios
         .post(url, value)
         .then((res) => {
@@ -106,7 +106,7 @@ const loadRender = () =>{
             <CCard className="p-4">
               <CCardBody>
                 <CForm
-                  onSubmit={goToDashboard} validated
+                  onSubmit={goToDashboard} 
                   className="row g-3 needs-validation"
                 
                 >

@@ -205,6 +205,7 @@ const Dashboard = () => {
             <div className="shadow p-3 mb-5 bg-white rounded m-2">
               <div className=" h5 fw-bold p-2  text-center rounded">
                 <table className="w-100 border">
+                  <tbody>
                   <tr className="bg-info text-light">
                     <td className="p-2">
                       <img src={require('../img/desk.png')} alt="" width={90} />
@@ -222,6 +223,7 @@ const Dashboard = () => {
                       <p className="">xyz@gmail.com</p>
                     </td>
                   </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
