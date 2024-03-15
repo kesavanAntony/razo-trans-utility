@@ -27,7 +27,7 @@ const Login = () => {
 
 const loadRender = () =>{
   axios
-  .get('https://backend-razo.vercel.app')
+  .get('http://localhost:4000')
   .then((res) => {
     if (res.data.valid) {
       navigate("/dashboard")
@@ -75,7 +75,7 @@ const loadRender = () =>{
     else {
       setValidated(true)
       console.log(value)
-     const url = 'https://backend-razo.vercel.app/login'
+     const url = 'http://localhost:4000/login'
       axios
         .post(url, value)
         .then((res) => {
