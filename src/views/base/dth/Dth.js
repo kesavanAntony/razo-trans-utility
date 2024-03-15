@@ -21,7 +21,7 @@ const Dth = () => {
   })
   
   useEffect(()=>{
-    axios.get('http://localhost:4000/list/dth/recharge')
+    axios.get('https://backend-razo.vercel.app/list/dth/recharge')
     .then((res)=>{
     const result = res.data;
     updateList(result)
