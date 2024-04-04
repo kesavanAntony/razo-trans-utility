@@ -36,7 +36,6 @@ const Termcondition = () => {
            <p>Provide contact details for users to reach out with questions or concerns about the terms and conditions.</p>
            <h5>Legal Compliance</h5>
            <p>Ensure that your terms and conditions comply with relevant laws and regulations, such as data protection laws and consumer rights legislation.</p>
-
             </div>
       </div>
     </div>

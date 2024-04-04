@@ -21,24 +21,24 @@ const Login = () => {
 
     const navigate = useNavigate('');
 
-  useEffect(() => {
-    loadRender();
-  }, [])
+  // useEffect(() => {
+  //   loadRender();
+  // }, [])
 
-const loadRender = () =>{
-  axios
-  .get('https://backend-razo.vercel.app')
-  .then((res) => {
-    if (res.data.valid) {
-      navigate("/dashboard")
-    } else {
-      navigate('/')
-    }
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-}
+// const loadRender = () =>{
+//   axios
+//   .get('http://localhost:4000')
+//   .then((res) => {
+//     if (res.data.valid) {
+//       navigate("/dashboard")
+//     } else {
+//       navigate('/')
+//     }
+//   })
+//   .catch((err) => {
+//     console.log(err)
+//   })
+// }
   // const [name, setName] = useState('')
 
 
@@ -62,7 +62,7 @@ const loadRender = () =>{
     else {
       setValidated(true)
       console.log(value)
-     const url = 'https://backend-razo.vercel.app/login'
+     const url = 'http://localhost:4000/login'
       axios
         .post(url, value)
         .then((res) => {
@@ -78,7 +78,7 @@ const loadRender = () =>{
   }
 
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <div className="bg-light min-vh-100 d-flex flex-row justify-content-center">
       <CContainer>
         <CRow className="justify-content-center">
           <div className="text-center m-2">

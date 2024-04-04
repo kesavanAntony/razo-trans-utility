@@ -12,7 +12,7 @@ const Pancard = () => {
           <div className="shadow p-3 mb-5 bg-white rounded">
             <div className="fw-bold text-light bg-black p-2  d-flex flex-row justify-content-between align-item-center">
               <h5>Uti Pancard</h5>
-              <button className="btn btn-primary rounded">LOGIN UTI PORTAL</button>
+              <button className="btn btn-primary rounded btn-sm">LOGIN UTI PORTAL</button>
             </div>
             <Form className=" border-bottom">
               <Table responsive className="border">
@@ -54,7 +54,7 @@ const Pancard = () => {
           <div className="shadow p-3 mb-5 bg-white rounded">
             <div className="fw-bold text-light bg-black p-2 rounded d-flex flex-row justify-content-between ">
               <h5 className="align-center">Recent Uti Pancard Token</h5>
-              <button className="btn btn-primary rounded">REQUEST FOR VIE-ID</button>
+              <button className="btn btn-primary rounded btn-sm">REQUEST FOR VIE-ID</button>
             </div>
             <Table responsive>
               <thead>

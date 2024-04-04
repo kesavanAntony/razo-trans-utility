@@ -31,7 +31,7 @@ const LoadWallet = () => {
    }
 
    useEffect(()=>{
-    axios.get('https://backend-razo.vercel.app/list/loadWallet')
+    axios.get('http://localhost:4000/list/loadWallet')
     .then((res)=>{
     const result = res.data;
     updateList(result)
@@ -58,7 +58,7 @@ const LoadWallet = () => {
       event.stopPropagation()
     }
     setValidated(true)
-    axios.post('https://backend-razo.vercel.app/loadWallet',value)
+    axios.post('http://localhost:4000/loadWallet',value)
     .then(res =>{
       alert("Fund request Added successfully")
       console.log(res.data)
@@ -91,7 +91,7 @@ const LoadWallet = () => {
                 className="me-2 p-2 fw-medium"
                 aria-label="Search"
               />
-              <Button className="btn btn-danger fw-medium ">Refresh</Button>
+              <button className="btn btn-danger fw-medium btn-sm ">Refresh</button>
             </Form>
           </Navbar.Collapse>
         </Container>
