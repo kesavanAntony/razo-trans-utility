@@ -8,8 +8,8 @@ const Contact = () => {
     <div>
       <Header/>
         <div className='container'>
-            <h3 className='text-center'>Contact Us</h3>
-    <div className='row'>
+            <h3 className='text-center mt-5'>Contact Us</h3>
+    <div className='row bg-light shadow p-3 mb-5 rounded text-light'>
      <Form>
      <Form.Group className="mb-3" >
         <Form.Label>Name</Form.Label>

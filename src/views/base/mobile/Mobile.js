@@ -54,10 +54,34 @@ const Mobile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateFormError(validate(value))
-    setIsSubmit(true)
+    // updateFormError(validate(value))
+    // setIsSubmit(true)
+         const validateErrors={} ;
+    if (!value.circle.trim()) {
+      validateErrors.circle = 'select your Circle'
+        }
+        if (!value.operator.trim()) {
+          validateErrors.operator = 'select your operator'
+        }
+        if (!value.mobileNumber.trim()) {
+          validateErrors.mobileNumber = 'mobile number is required'
+        }
+    
+        if (!value.amount.trim()) {
+          validateErrors.amount = 'amount is required'
+        } else if (value.amount < 10) {
+          validateErrors.amount = 'amount must be above 10'
+        }
+        if (!value.tpin.trim()) {
+          validateErrors.tpin = 'tpin is required'
+        } else if (value.tpin < 4) {
+          validateErrors.tpin = 'enter 4 digit number'
+        }
+        updateFormError(validateErrors)
 
-    if (Object.keys(formError).length === 0 && isSubmit) {
+    
+
+    if (Object.keys(validateErrors).length === 0 ) {
       console.log(value)
 
       axios
@@ -120,31 +144,31 @@ const Mobile = () => {
     }
   }
 
-  const validate = (values) => {
-    const errors = {}
+  // const validate = (values) => {
+  //   const errors = {}
 
-    if (!values.circle) {
-      errors.circle = 'select your Circle'
-    }
-    if (!values.operator) {
-      errors.operator = 'select your operator'
-    }
-    if (!values.mobileNumber) {
-      errors.mobileNumber = 'mobile number is required'
-    }
+  //   if (!values.circle) {
+  //     errors.circle = 'select your Circle'
+  //   }
+  //   if (!values.operator) {
+  //     errors.operator = 'select your operator'
+  //   }
+  //   if (!values.mobileNumber) {
+  //     errors.mobileNumber = 'mobile number is required'
+  //   }
 
-    if (!values.amount) {
-      errors.amount = 'amount is required'
-    } else if (values.amount < 10) {
-      errors.amount = 'amount must be above 10'
-    }
-    if (!values.tpin) {
-      errors.tpin = 'tpin is required'
-    } else if (values.tpin < 4) {
-      errors.tpin = 'enter 4 digit number'
-    }
-    return errors
-  }
+  //   if (!values.amount) {
+  //     errors.amount = 'amount is required'
+  //   } else if (values.amount < 10) {
+  //     errors.amount = 'amount must be above 10'
+  //   }
+  //   if (!values.tpin) {
+  //     errors.tpin = 'tpin is required'
+  //   } else if (values.tpin < 4) {
+  //     errors.tpin = 'enter 4 digit number'
+  //   }
+  //   return errors
+  // }
 
 
   return (

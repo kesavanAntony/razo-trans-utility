@@ -13,7 +13,7 @@ const Header = () => {
           
           <Navbar.Toggle aria-controls="basic-navbar-nav" className='' />
           <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
-          <Nav className="ml-auto align-items-center gap-3">
+          <Nav className="ml-auto align-items-center gap-3 text-uppercase">
             <NavLink className='text-light text-decoration-none' to="/">About Us</NavLink>
             <NavLink  className='text-light text-decoration-none' to="/terms">Terms & condition</NavLink>
             <NavLink className='text-light text-decoration-none' to="/refund">Return & Refund</NavLink>
