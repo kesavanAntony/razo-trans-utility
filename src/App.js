@@ -7,6 +7,10 @@ import Register from './views/pages/register/Register';
 import Page404 from './views/pages/page404/Page404';
 import Page500 from './views/pages/page500/Page500';
 import Login from './views/pages/login/Login';
+import Home from './home/screen/Home';
+import Termcondition from './home/screen/Termcondition';
+import Returnrefund from './home/screen/Returnrefund';
+import Contact from './home/screen/Contact';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -31,12 +35,16 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Suspense fallback={loading}>
-          <Routes>
+          <Routes> 
+            <Route exact path="" name="Home" element={<Home />} />
             <Route exact path="/login" name="Login Page" element={<Login />} />
+            <Route exact path="/terms" name="Terms Page" element={<Termcondition />} />
+            <Route exact path="/refund" name="Refund Page" element={<Returnrefund />} />
+            <Route exact path="/contact" name="Contact Page" element={<Contact/>}></Route>
             <Route exact path="/register" name="Register Page" element={<Register />} />
             <Route exact path="/404" name="Page 404" element={<Page404 />} />
             <Route exact path="/500" name="Page 500" element={<Page500 />} />
-            <Route path="/*" name="Home" element={<DefaultLayout />} />
+            <Route path="*" name="Home" element={<DefaultLayout />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

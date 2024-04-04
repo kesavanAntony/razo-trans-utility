@@ -21,25 +21,25 @@ const Login = () => {
 
     const navigate = useNavigate('');
 
-  // useEffect(() => {
-  //   loadRender();
-  // }, [])
+  useEffect(() => {
+    loadRender();
+  }, [])
 
-// const loadRender = () =>{
-//   axios
-//   .get('http://localhost:4000')
-//   .then((res) => {
-//     if (res.data.valid) {
-//       navigate("/dashboard")
-//     } else {
-//       navigate('/')
-//     }
-//   })
-//   .catch((err) => {
-//     console.log(err)
-//   })
-// }
-  // const [name, setName] = useState('')
+const loadRender = () =>{
+  axios
+  .get('http://localhost:4000')
+  .then((res) => {
+    if (res.data.valid) {
+      navigate("/dashboard")
+    } else {
+      navigate('/')
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
+  const [name, setName] = useState('')
 
 
   const [validated,setValidated] = useState({}) 
@@ -78,7 +78,7 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row justify-content-center">
+    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
           <div className="text-center m-2">
