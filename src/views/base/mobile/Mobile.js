@@ -33,7 +33,7 @@ const Mobile = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:4000/list/mobile/recharge')
+      .get('https://backend-razo.vercel.app/list/mobile/recharge')
       .then((res) => {
         const result = res.data
         updateList(result)
@@ -61,7 +61,7 @@ const Mobile = () => {
       console.log(value)
 
       axios
-        .post('http://localhost:4000/order', value)
+        .post('https://backend-razo.vercel.app/order', value)
         .then((res) => {
           const result = res.data
           console.log(result)
@@ -79,7 +79,7 @@ const Mobile = () => {
               const body = {
                 ...response,
               }
-              const validateRes = await fetch('http://localhost:4000/order/validate', {
+              const validateRes = await fetch('https://backend-razo.vercel.app/order/validate', {
                 method: 'POST',
                 body: JSON.stringify(body),
                 headers: {
