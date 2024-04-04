@@ -62,6 +62,12 @@ const ResolvedTicket = React.lazy(() => import('./views/supportTicket/resolvedTi
 const ProfileSetting = React.lazy(()=> import ('./views/accountSetting/profileSettting/ProfileSetting'))
 const Certificate = React.lazy(()=> import ('./views/accountSetting/certificate/Certificate'))
 
+// company
+const AboutUs =React.lazy(()=> import ('./views/company/about/About'))
+const ContactUs =React.lazy(()=> import ('./views/company/contact/Contact'))
+const Policy =React.lazy(()=> import ('./views/company/returnrefund/Returnrefund'))
+const Terms =React.lazy(()=> import ('./views/company/termcondition/Termcondition'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -111,6 +117,11 @@ const routes = [
   // account Setting
   { path: '/accountSetting/profileSetting', name: 'Profile Setting', element: ProfileSetting },
   { path: '/accountSetting/certificate', name: 'Certificate', element: Certificate },
+  // company
+  { path: '/company/about', name: 'About Us', element:AboutUs},
+  { path: '/company/contact', name: 'Contact Us', element:ContactUs},
+  { path: '/company/returnrefund', name: 'Return & Refund', element:Policy},
+  { path: '/company/termcondition', name: 'Terms & Condition', element:Terms},
 ]
 
 export default routes

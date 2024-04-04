@@ -13,6 +13,7 @@ import {
   cilWallet,
   cilStream,
   cilNewspaper,
+  cilCompass,
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -22,27 +23,8 @@ const _nav = [
     name: 'Dashboard',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    // badge: {
-    //   color: 'info',
-    //   text: 'NEW',
-    // },
   },
-  // {
-  //   component: CNavTitle,
-  //   name: 'Theme',
-  // },
-  // {
-  //   component: CNavItem,
-  //   name: 'Colors',
-  //   to: '/theme/colors',
-  //   icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
-  // },
-  // {
-  //   component: CNavItem,
-  //   name: 'Typography',
-  //   to: '/theme/typography',
-  //   icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
-  // },
+
   {
     component: CNavTitle,
     name: 'Base',
@@ -387,6 +369,33 @@ const _nav = [
         component: CNavItem,
         name: 'Tatvik TMF20',
         to: 'https://drive.google.com/file/d/1-LJfFXIvgE3ZLIm5fmYGjz95IvUnQYk4/view',
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: 'Company',
+    icon: <CIcon icon={cilCompass} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'About us',
+        to: '/company/about',
+      },
+      {
+        component: CNavItem,
+        name: 'Contact Us',
+        to: '/company/contact',
+      },
+      {
+        component: CNavItem,
+        name: 'Return & Refund Policy',
+        to: '/company/returnrefund',
+      },
+      {
+        component: CNavItem,
+        name: 'Terms & Condition',
+        to: '/company/termcondition',
       },
     ],
   },

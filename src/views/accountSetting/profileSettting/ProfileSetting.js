@@ -30,7 +30,7 @@ const ProfileSetting = () => {
             
               <Col md={4} sm={12}>
               <div className="p-2">
-            <label className="h6 ">Name</label>
+            <label className="h6">Name</label>
             <div>
             <input
                 type="text"

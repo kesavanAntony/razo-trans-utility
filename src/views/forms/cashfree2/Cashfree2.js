@@ -23,7 +23,7 @@ const Cashfree2 = () => {
       <Row className="m-2">
         <Col md={4} sm={12} className="">
           <div className="shadow p-3 mb-5 bg-white rounded">
-           <div className="fw-bold text-light bg-warning p-2  rounded-2">
+           <div className="fw-bold text-light bg-dark p-2  rounded-2">
               <h5> Cashfree 2-Payout</h5>
             </div>
             <Form className="m-4 " noValidate validated={validated}

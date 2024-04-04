@@ -7,13 +7,20 @@ import { cilCursor } from '@coreui/icons'
 import Table from 'react-bootstrap/Table'
 import { CFormFeedback } from '@coreui/react'
 import { useState } from 'react'
-import axios from 'axios'
+import axios from 'axios';
+import Randomstring from 'randomstring'
 
 const Mobile = () => {
   // const [validated, setValidated] = useState(false)
   const [list, updateList] = useState([])
   const [formError, updateFormError] = useState({})
   const [isSubmit, setIsSubmit] = useState(false)
+
+  const randomString = Randomstring.generate({
+    length:8,
+    charset:'alphabetic'
+  });
+ console.log(randomString)
   const [value, setValue] = useState({
     circle: '',
     operator: '',
@@ -21,7 +28,7 @@ const Mobile = () => {
     amount: '',
     tpin: '',
     currency: 'INR',
-    receiptID: 'jgyhfchd',
+    receiptID: randomString,
   })
 
   useEffect(() => {
@@ -139,94 +146,6 @@ const Mobile = () => {
     return errors
   }
 
-  // useEffect(()=>{
-
-  //   if(Object.keys(formError).length === 0 && isSubmit){
-
-  //   }
-  // },[formError])
-
-  // setValidated(true)
-  // console.log(value)
-  // axios.post('https://backend-razo.vercel.app/order',value)
-  // .then(res => {
-  //   const result = res.data;
-  //   console.log(result)
-  // })
-
-  //  .catch(err => console.log(err))
-
-  // const paymenthandler =async (e) =>{
-  // const response = await fetch("https://backend-razo.vercel.app/order",{
-  //   method:"POST",
-  //   body:JSON.stringify({
-  //     amount,
-  //     currency,
-  //     receipt:receiptID
-  //   }),
-  //   headers :{
-  //      "Content-Type": "application/json",
-  //   },
-  //  })
-  //  const order = await response.json();
-  //  console.log(order)
-
-  //   var options = {
-  //     "key": "rzp_test_Q6NMBBDHq9vpwS", // Enter the Key ID generated from the Dashboard
-  //     "amount": value.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-  //     "currency":value.currency,
-  //     "name": "Optimista Corp", //your business name
-  //     "description": "Test Transaction",
-  //     "image": <img src={require ("../rtu.png")} alt='razologo'/>,
-  //     "order_id": '', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-  //     "handler": async function (response){
-  //        const body ={
-  //         ...response
-  //        };
-  //        const validateRes = await fetch("https://backend-razo.vercel.app/order/validate",{
-  //         method:"POST",
-  //         body:JSON.stringify(body),
-  //         headers :{
-  //            "Content-Type": "application/json",
-  //         },
-  //        })
-  //        const jsonRes = await validateRes.json()
-  //        console.log(jsonRes)
-  //     },
-  //     "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-  //         "name": "kesavan", //your customer's name
-  //         "email": "xyz@example.com",
-  //         "contact": "9000090000"  //Provide the customer's phone number for better conversion rates
-  //     },
-  //     "notes": {
-  //         "address": "Razorpay Corporate Office"
-  //     },
-  //     "theme": {
-  //         "color": "#3399cc"
-  //     }
-
-  //       };
-
-  // var rzp1 = new window.Razorpay(options);
-  // rzp1.on('payment.failed', function (response){
-  //         alert(response.error.code);
-  //         alert(response.error.description);
-  //         alert(response.error.source);
-  //         alert(response.error.step);
-  //         alert(response.error.reason);
-  //         alert(response.error.metadata.order_id);
-  //         alert(response.error.metadata.payment_id);
-  //         });
-  //        rzp1.open();
-  //        e.preventDefault();
-
-  //   setValidated(true)
-  //   axios.post('https://backend-razo.vercel.app/mobile/recharge',value)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     alert("mobile recharged successfully")
-  //   })
-  //    .catch(err => console.log(err))
 
   return (
     <div>

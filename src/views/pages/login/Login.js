@@ -54,19 +54,6 @@ const loadRender = () =>{
   const goToDashboard = (event) => {
     event.preventDefault()
     
-  //   const errors={}
-  //   if(!value.userName.trim()){
-  //    errors.userName = "username required"
-  //   }
-  //   if(!value.password.trim()){
-  //     errors.password = "password required"
-  //   }
-  //  updateFormError(errors)
-  //  if(Object.keys(errors).length===0){
-
-       
-  //  }
-
     const form = event.currentTarget
     if (form.checkValidity() === false) {
       event.preventDefault()
@@ -122,7 +109,7 @@ const loadRender = () =>{
                       required
                       onChange={OnHandle}
                     />
-                   {/* <CFormFeedback className="text-danger fw-medium"></CFormFeedback> */}
+             
                   </CInputGroup>
                   <CInputGroup className="mb-4">
                     <CInputGroupText>
@@ -135,7 +122,7 @@ const loadRender = () =>{
                       required
                       onChange={OnHandle}
                     />
-                        {/* {formError.password && <CFormFeedback className="text-danger fw-medium">{formError.password}</CFormFeedback>} */}
+                      
                   </CInputGroup>
                   <CRow>
                     <CCol xs={6}>

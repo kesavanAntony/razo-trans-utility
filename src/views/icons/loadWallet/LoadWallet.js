@@ -91,7 +91,7 @@ const LoadWallet = () => {
                 className="me-2 p-2 fw-medium"
                 aria-label="Search"
               />
-              <Button className="btn btn-danger fw-medium">Refresh</Button>
+              <Button className="btn btn-danger fw-medium ">Refresh</Button>
             </Form>
           </Navbar.Collapse>
         </Container>
@@ -154,7 +154,7 @@ const LoadWallet = () => {
           <Table className="border-none p-5 shadow p-3 bg-white">
             <tbody>
               <tr>
-                <td>VANILLA BUSINESS SOLUTION</td>
+                <td>xyz solution</td>
                 <td>508734863</td>
               </tr>
               <tr>
@@ -175,7 +175,7 @@ const LoadWallet = () => {
           <Table className="border-none shadow p-3 bg-white">
             <tbody>
               <tr>
-                <td>VANILLA BUSINESS SOLUTION</td>
+                <td>xyz solution</td>
                 <td>508734863</td>
               </tr>
               <tr>
@@ -194,7 +194,7 @@ const LoadWallet = () => {
           <Table className="border-none shadow p-3 bg-white">
             <tbody>
               <tr>
-                <td>VANILLA BUSINESS SOLUTION</td>
+                <td>xyz solution</td>
                 <td>508734863</td>
               </tr>
               <tr>
