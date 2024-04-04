@@ -372,33 +372,33 @@ const _nav = [
       },
     ],
   },
-  {
-    component: CNavGroup,
-    name: 'Company',
-    icon: <CIcon icon={cilCompass} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'About us',
-        to: '/company/about',
-      },
-      {
-        component: CNavItem,
-        name: 'Contact Us',
-        to: '/company/contact',
-      },
-      {
-        component: CNavItem,
-        name: 'Return & Refund Policy',
-        to: '/company/returnrefund',
-      },
-      {
-        component: CNavItem,
-        name: 'Terms & Condition',
-        to: '/company/termcondition',
-      },
-    ],
-  },
+  // {
+  //   component: CNavGroup,
+  //   name: 'Company',
+  //   icon: <CIcon icon={cilCompass} customClassName="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       name: 'About us',
+  //       to: '/company/about',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'Contact Us',
+  //       to: '/company/contact',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'Return & Refund Policy',
+  //       to: '/company/returnrefund',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       name: 'Terms & Condition',
+  //       to: '/company/termcondition',
+  //     },
+  //   ],
+  // },
 ]
 
 export default _nav

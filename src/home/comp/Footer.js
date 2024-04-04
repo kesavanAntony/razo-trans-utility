@@ -4,7 +4,7 @@ import { CFooter } from '@coreui/react'
 const Footer = () => {
   return (
    
-     <CFooter>
+     <CFooter className='mt-5'>
       <div>
         <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">
           Razo Trans Utility Pvt Ltd

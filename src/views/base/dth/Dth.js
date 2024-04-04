@@ -42,7 +42,7 @@ const Dth = () => {
       event.stopPropagation()
     }
     setValidated(true)
-    axios.post('http://localhost:4000/dth/recharge',value)
+    axios.post('https://backend-razo.vercel.app/dth/recharge',value)
     .then(res =>{
       alert("dth recharged successfully")
       console.log(res.data)

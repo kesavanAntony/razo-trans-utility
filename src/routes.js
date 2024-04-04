@@ -63,12 +63,12 @@ const ProfileSetting = React.lazy(()=> import ('./views/accountSetting/profileSe
 const Certificate = React.lazy(()=> import ('./views/accountSetting/certificate/Certificate'))
 
 // company
-const AboutUs =React.lazy(()=> import ('./views/company/about/About'))
-const ContactUs =React.lazy(()=> import ('./views/company/contact/Contact'))
-const Policy =React.lazy(()=> import ('./views/company/returnrefund/Returnrefund'))
-const Terms =React.lazy(()=> import ('./views/company/termcondition/Termcondition'))
+// const AboutUs =React.lazy(()=> import ('./views/company/about/About'))
+// const ContactUs =React.lazy(()=> import ('./views/company/contact/Contact'))
+// const Policy =React.lazy(()=> import ('./views/company/returnrefund/Returnrefund'))
+// const Terms =React.lazy(()=> import ('./views/company/termcondition/Termcondition'))
 // login
-const Login= React.lazy(()=> import ("./views/pages/login/Login"))
+// const Login= React.lazy(()=> import ("./views/pages/login/Login"))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -120,12 +120,12 @@ const routes = [
   { path: '/accountSetting/profileSetting', name: 'Profile Setting', element: ProfileSetting },
   { path: '/accountSetting/certificate', name: 'Certificate', element: Certificate },
   // company
-  { path: '/company/about', name: 'About Us', element:AboutUs},
-  { path: '/company/contact', name: 'Contact Us', element:ContactUs},
-  { path: '/company/returnrefund', name: 'Return & Refund', element:Policy},
-  { path: '/company/termcondition', name: 'Terms & Condition', element:Terms},
+  // { path: '/company/about', name: 'About Us', element:AboutUs},
+  // { path: '/company/contact', name: 'Contact Us', element:ContactUs},
+  // { path: '/company/returnrefund', name: 'Return & Refund', element:Policy},
+  // { path: '/company/termcondition', name: 'Terms & Condition', element:Terms},
   // login
-  {path:'pages/login', name:'Login',element:Login}
+  // {path:'pages/login', name:'Login',element:Login}
 ]
 
 export default routes

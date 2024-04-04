@@ -6,7 +6,7 @@ import { DefaultLayout } from './layout';
 import Register from './views/pages/register/Register';
 import Page404 from './views/pages/page404/Page404';
 import Page500 from './views/pages/page500/Page500';
-import Login from './views/pages/login/Login';
+import Login from './home/screen/Login';
 import Home from './home/screen/Home';
 import Termcondition from './home/screen/Termcondition';
 import Returnrefund from './home/screen/Returnrefund';
@@ -36,15 +36,16 @@ class App extends Component {
       <BrowserRouter>
         <Suspense fallback={loading}>
           <Routes> 
-            <Route exact path="" name="Home" element={<Home />} />
-            <Route exact path="/login" name="Login Page" element={<Login />} />
-            <Route exact path="/terms" name="Terms Page" element={<Termcondition />} />
-            <Route exact path="/refund" name="Refund Page" element={<Returnrefund />} />
-            <Route exact path="/contact" name="Contact Page" element={<Contact/>}></Route>
-            <Route exact path="/register" name="Register Page" element={<Register />} />
-            <Route exact path="/404" name="Page 404" element={<Page404 />} />
-            <Route exact path="/500" name="Page 500" element={<Page500 />} />
-            <Route path="*" name="Home" element={<DefaultLayout />} />
+            <Route  path="" name="Home" element={<Home />} />
+            <Route  path="/login" name="Login Page" element={<Login />} />
+            
+            <Route  path="/terms" name="Terms Page" element={<Termcondition />} />
+            <Route  path="/refund" name="Refund Page" element={<Returnrefund />} />
+            <Route  path="/contact" name="Contact Page" element={<Contact/>}/>
+            <Route path="/register" name="Register Page" element={<Register />} />
+            <Route path="/404" name="Page 404" element={<Page404 />} />
+            <Route path="/505" name="Page 500" element={<Page500 />} />
+            <Route path="*" name="Layout" element={<DefaultLayout />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
