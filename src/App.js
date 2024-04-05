@@ -11,6 +11,7 @@ import Home from './home/screen/Home';
 import Termcondition from './home/screen/Termcondition';
 import Returnrefund from './home/screen/Returnrefund';
 import Contact from './home/screen/Contact';
+import Privacy from './home/screen/Privacy';
 
 const loading = (
   <div className="pt-3 text-center">
@@ -38,6 +39,7 @@ class App extends Component {
           <Routes> 
             <Route  path="" name="Home" element={<Home />} />
             <Route  path="/login" name="Login Page" element={<Login />} />
+            <Route  path="/privacy" name="Shipping Page" element={<Privacy />} />
             
             <Route  path="/terms" name="Terms Page" element={<Termcondition />} />
             <Route  path="/refund" name="Refund Page" element={<Returnrefund />} />
