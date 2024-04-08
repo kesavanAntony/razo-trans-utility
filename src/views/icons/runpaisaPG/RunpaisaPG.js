@@ -74,7 +74,7 @@ const RunpaisaPG= () => {
               const jsonRes = await validateRes.json()
              if(jsonRes.msg === "success"){
              
-               axios.post("http://localhost:4000/mobile/recharge",value)
+               axios.post("https://backend-razo.vercel.app/mobile/recharge",value)
                .then((response)=>{
                const result = response.data;
                if(result.message === "success"){
