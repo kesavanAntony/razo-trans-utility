@@ -10,20 +10,25 @@ import React, { useState,useEffect } from 'react'
 import { cilPlus } from '@coreui/icons'
 import { CFormFeedback } from '@coreui/react'
 import axios from 'axios'
+import Randomstring from 'randomstring'
+import { useNavigate } from "react-router-dom";
 
 const LoadWallet = () => {
 
-  const [validated, setValidated] = useState(false)
+  const randomString = Randomstring.generate({
+    length:8,
+    charset:'alphabetic'
+  });
+  const navigate =useNavigate()
+
   const [lgShow, setLgShow] = useState(false)
   const [list,updateList] = useState([])
+  const [formError, updateFormError] = useState({})
   const [value,setValue]=useState({
-    depositBank:"",
-    amount:"",
-    paymentMode:"",
-    endingDate:"",
-    refNo:"",
-    paySlip:"",
-    remarks:"",
+    remarks: '',
+    amount: '',
+    currency: 'INR',
+    receiptID: randomString,
   })
 
   const onHandle = (e) =>{
@@ -31,39 +36,124 @@ const LoadWallet = () => {
    }
 
    useEffect(()=>{
-    axios.get('https://backend-razo.vercel.app/list/loadWallet')
-    .then((res)=>{
-    const result = res.data;
-    updateList(result)
- 
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+    listLoadWallet()
     },[])
 
-   const uploadImage = (event)=>{
-     const reader = new FileReader()
-     const file = event.target.files[0]
-     reader.readAsDataURL(file);
-     reader.onload = () =>{
-      setValue({...value,paySlip:reader.result})
-     }
-   }
-  const handleSubmit = (event) =>{
-
-    const form = event.currentTarget
-    if (form.checkValidity() === false) {
-      event.preventDefault()
-      event.stopPropagation()
+    const listLoadWallet = () =>{
+      axios.get('https://backend-razo.vercel.app/list/loadWallet')
+      .then((res)=>{
+      const result = res.data;
+      updateList(result)
+   
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
     }
-    setValidated(true)
-    axios.post('https://backend-razo.vercel.app/loadWallet',value)
-    .then(res =>{
-      alert("Fund request Added successfully")
-      console.log(res.data)
-    })
-    .catch(err => console.log(err)) 
+
+  //  const uploadImage = (event)=>{
+  //    const reader = new FileReader()
+  //    const file = event.target.files[0]
+  //    reader.readAsDataURL(file);
+  //    reader.onload = () =>{
+  //     setValue({...value,paySlip:reader.result})
+  //    }
+  //  }
+  const handleSubmit = (e) =>{
+
+    e.preventDefault()
+         const validateErrors={} ;
+   
+        if (!value.remarks.trim()) {
+          validateErrors.remarks = 'remarks required'
+        }
+        if (!value.amount.trim()) {
+          validateErrors.amount = 'amount is required'
+        } 
+        else if (value.amount < 10) {
+          validateErrors.amount = 'amount must be above 10'
+        }
+
+        updateFormError(validateErrors)
+
+    
+
+    if (Object.keys(validateErrors).length === 0 ) {
+
+      axios
+        .post('https://backend-razo.vercel.app/order', value)
+        .then((res) => {
+          const result = res.data
+          console.log(result)
+          console.log(result.amount)
+
+          var options = {
+            key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
+            amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            currency: result.currency,
+            name: 'Optimista Corp', //your business name
+            description: 'Test Transaction',
+            image:"https://app.gemoo.com/share/image-annotation/627135246211112960?codeId=vJ32leWg3Jjao&origin=imageurlgenerator",
+            order_id: result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            handler: async function (response) {
+              const body = {
+                ...response,
+              }
+              const validateRes = await fetch('https://backend-razo.vercel.app/order/validate', {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              })
+              const jsonRes = await validateRes.json()
+              console.log(jsonRes)
+             if(jsonRes.msg === "success"){
+             
+               axios.post("https://backend-razo.vercel.app/loadwallet",value)
+               .then((response)=>{
+               const result = response.data;
+               if(result.message === "success"){
+                alert("wallet added successfully");
+                navigate("/icons/loadWallet")
+                listLoadWallet();
+               }
+               })
+               .catch((error)=>{
+                console.log(error)
+               })
+             }
+            },
+            prefill: {
+              //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+              name: 'kesavan', //your customer's name
+              email: 'xyz@example.com',
+              contact: '9000090000', //Provide the customer's phone number for better conversion rates
+            },
+            notes: {
+              address: 'Razorpay Corporate Office',
+            },
+            theme: {
+              color: '#3399cc',
+            },
+          }
+
+          var rzp1 = new window.Razorpay(options)
+          rzp1.on('payment.failed', function (response) {
+              alert("payment Failed")
+            // alert(response.error.code)
+            // alert(response.error.description)
+            // alert(response.error.source)
+            // alert(response.error.step)
+            // alert(response.error.reason)
+            // alert(response.error.metadata.order_id)
+            // alert(response.error.metadata.payment_id)
+          })
+          rzp1.open()
+          e.preventDefault()
+        })
+        .catch((err) => console.log(err))
+    }
   }
   
 
@@ -220,12 +310,12 @@ const LoadWallet = () => {
         <Modal.Header closeButton className='bg-secondary text-light'>
           <Modal.Title id="example-modal-sizes-title-lg" >Wallet Fund Request</Modal.Title>
         </Modal.Header>
-        <CForm noValidate validated={validated}
+        <CForm 
            onSubmit={handleSubmit}>
         <Modal.Body>
           <Row>
-          <Col md={4} sm={12}>
-            <div className="p-2">
+          <Col md={6} sm={12}>
+            {/* <div className="p-2">
               <label className="h6 w-100">Deposit Bank</label>
               <div>
                 <CFormSelect className="rounded fw-medium w-100 border-2" required onChange={onHandle} name='depositBank'>
@@ -241,40 +331,40 @@ const LoadWallet = () => {
                 </CFormSelect>
                 <CFormFeedback invalid>Please Select Bank</CFormFeedback>
               </div>
-            </div>
-            <div className="p-2">
+            </div> */}
+            {/* <div className="p-2">
               <label className=" w-100 h6">Ending Date</label>
               <div>
               <CFormInput type="date" id="validationCustom01" required onChange={onHandle} name='endingDate'/>
               </div>
               <CFormFeedback invalid>Please select Date</CFormFeedback>
-            </div>
-            <div className="p-2">
-            <label className="h6 w-100">Remark</label>
-            <div>
-            <CFormInput
-                type="text"
-                placeholder="Enter Remark"
-                className="rounded fw-medium text-black w-100" required onChange={onHandle} name='remarks'
-              />  
-              </div>
-              <CFormFeedback invalid>Please Enter Remarks</CFormFeedback>
-            </div>
-          </Col>
-          <Col md={4} sm={12}>
-            <div className="p-2">
+            </div> */}
+             <div className="p-2">
                <label className="h6 w-100">Amount</label>
             <div>
               <CFormInput
                 type="text"
                 placeholder="Enter Amount"
-                className="rounded fw-medium text-black" required onChange={onHandle} name='amount'
+                className="rounded fw-medium text-black"  onChange={onHandle} name='amount'
               />
             </div>
-            <CFormFeedback invalid>Please Enter Amount</CFormFeedback>
+            <CFormFeedback className="text-danger fw-medium border-0">{formError.amount}</CFormFeedback>
+            </div>
+          </Col>
+          <Col md={6} sm={12}>
+          <div className="p-2">
+            <label className="h6 w-100">Remark</label>
+            <div>
+            <CFormInput
+                type="text"
+                placeholder="Enter Remark"
+                className="rounded fw-medium text-black w-100"  onChange={onHandle} name='remarks'
+              />  
+              </div>
+              <CFormFeedback className="text-danger fw-medium border-0">{formError.remarks}</CFormFeedback>
             </div>
            
-            <div className="p-2">
+            {/* <div className="p-2">
               <label className="h6 w-100">Ref No.</label>
               <div>
               <CFormInput
@@ -285,10 +375,10 @@ const LoadWallet = () => {
               </div>
               <CFormFeedback invalid>Please Enter Reference Number</CFormFeedback>
               
-            </div>
+            </div> */}
           </Col>
-          <Col md={4} sm={12}>
-          <div className="p-2">
+          {/* <Col md={4} sm={12}> */}
+          {/* <div className="p-2">
               <label className="h6 w-100">Payment Mode</label>
               <div>
                 <CFormSelect className="rounded fw-medium w-100 border-2" required onChange={onHandle} name='paymentMode'>
@@ -301,15 +391,15 @@ const LoadWallet = () => {
                 </CFormSelect>
               </div>
               <CFormFeedback invalid>Please Select Payment</CFormFeedback>
-            </div>
-            <div className="p-2">
+            </div> */}
+            {/* <div className="p-2">
             <label className="h6 w-100">Pay Slip (Optional)</label>
             <div className="p-2">
               <CFormInput type='file' className='rounded' onChange={uploadImage} name='paySlip'/>
             </div>
             <CFormFeedback invalid>Please Select file</CFormFeedback>
-            </div>
-          </Col>
+            </div> */}
+          {/* </Col> */}
           </Row>
          
         </Modal.Body>
@@ -334,9 +424,8 @@ const LoadWallet = () => {
             <Table responsive>
               <thead>
                 <tr>
-                  <th className='col-md-2'>#</th>
-                  <th className='col-md-3'>Deposit Bank Details</th>
-                  <th>Refrence Details</th>
+                  <th className=''>Transaction Id</th>
+                  <th className=''>Date And Time</th>
                   <th>Amount</th>
                   <th>Remark</th>
                   <th>Action</th>
@@ -346,18 +435,15 @@ const LoadWallet = () => {
                 {
                   list.map((item,index)=>{
                     return(
-                       <tr key={index} className='align-middle'>
-                  <td><h6>{item.transactionId}</h6>
-                  <p>{item.rechargeTime}</p></td>
-                  <td><h6>Name - {item.depositBank}</h6></td>
+                  <tr key={index} className='align-middle'>
+                  <td><h6>{item.transactionId}</h6></td>
+                  <td><h6>{item.rechargeTime}</h6></td>
+                  <td><h6>Amount - {item.amount}</h6></td>
                   <td>
-                    <h6>Ref NO - {item.refNo}</h6>
-                    <h6>Paydate - {item.endingDate}</h6>
-                    <h6>PayMode - {item.paymentMode}</h6>
+                    <h6>{item.remarks}</h6>
                   </td>
-                  <td>{item.amount}</td>
-                  <td>{item.remarks}</td>
-                  <td><button className='bg-success text-light rounded'>Success</button></td>
+                  
+                  <td><button className='bg-success text-light rounded border-0'>Success</button></td>
                 </tr>
                     )
                   })

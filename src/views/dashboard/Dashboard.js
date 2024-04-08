@@ -6,6 +6,7 @@ import CIcon from '@coreui/icons-react'
 
 const Dashboard = () => {
 
+ 
 
   return (
     <>
@@ -19,15 +20,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>
@@ -113,15 +114,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>
@@ -238,15 +239,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>
@@ -332,15 +333,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>
@@ -466,15 +467,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>
@@ -560,15 +561,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>
@@ -656,15 +657,15 @@ const Dashboard = () => {
               </div>
               <div className="d-flex flex-row justify-evenly items-center border p-2 rounded">
                 <div className="text-center w-100 fw-medium ">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Today Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Month Sales</span>
                 </div>
                 <div className="text-center w-100 fw-medium">
-                  <h6>$ 0</h6>
+                  <h6>₹ 0</h6>
                   <span>Last Month Sales</span>
                 </div>
               </div>

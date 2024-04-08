@@ -9,18 +9,19 @@ import { CFormFeedback } from '@coreui/react'
 import { useState } from 'react'
 import axios from 'axios';
 import Randomstring from 'randomstring'
+import { useNavigate } from "react-router-dom";
 
 const Mobile = () => {
-  // const [validated, setValidated] = useState(false)
+
   const [list, updateList] = useState([])
   const [formError, updateFormError] = useState({})
-  const [isSubmit, setIsSubmit] = useState(false)
+ const navigate =useNavigate()
 
   const randomString = Randomstring.generate({
     length:8,
     charset:'alphabetic'
   });
- console.log(randomString)
+
   const [value, setValue] = useState({
     circle: '',
     operator: '',
@@ -29,33 +30,32 @@ const Mobile = () => {
     tpin: '',
     currency: 'INR',
     receiptID: randomString,
+
   })
 
   useEffect(() => {
-    axios
-      .get('https://backend-razo.vercel.app/list/mobile/recharge')
-      .then((res) => {
-        const result = res.data
-        updateList(result)
-        console.log(result)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    listMobileRecharge();
   }, [])
+
+  const listMobileRecharge = () =>{
+    axios
+    .get('https://backend-razo.vercel.app/list/mobile/recharge')
+    .then((res) => {
+      const result = res.data
+      updateList(result)
+      console.log(result)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  } 
 
   const onHandle = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
 
-  //  const amount = 100;
-  // const currency= "INR"
-  // const receiptID =  "qwswee"
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    // updateFormError(validate(value))
-    // setIsSubmit(true)
          const validateErrors={} ;
     if (!value.circle.trim()) {
       validateErrors.circle = 'select your Circle'
@@ -69,7 +69,8 @@ const Mobile = () => {
     
         if (!value.amount.trim()) {
           validateErrors.amount = 'amount is required'
-        } else if (value.amount < 10) {
+        } 
+        else if (value.amount < 10) {
           validateErrors.amount = 'amount must be above 10'
         }
         if (!value.tpin.trim()) {
@@ -82,7 +83,6 @@ const Mobile = () => {
     
 
     if (Object.keys(validateErrors).length === 0 ) {
-      console.log(value)
 
       axios
         .post('https://backend-razo.vercel.app/order', value)
@@ -92,7 +92,7 @@ const Mobile = () => {
           console.log(result.amount)
 
           var options = {
-            key: 'rzp_test_Q6NMBBDHq9vpwS', // Enter the Key ID generated from the Dashboard
+            key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
             amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: result.currency,
             name: 'Optimista Corp', //your business name
@@ -112,6 +112,21 @@ const Mobile = () => {
               })
               const jsonRes = await validateRes.json()
               console.log(jsonRes)
+             if(jsonRes.msg === "success"){
+             
+               axios.post("https://backend-razo.vercel.app/mobile/recharge",value)
+               .then((response)=>{
+               const result = response.data;
+               if(result.message === "success"){
+                alert("recharged successfully");
+                navigate("/base/mobile")
+                listMobileRecharge();
+               }
+               })
+               .catch((error)=>{
+                console.log(error)
+               })
+             }
             },
             prefill: {
               //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
@@ -129,13 +144,15 @@ const Mobile = () => {
 
           var rzp1 = new window.Razorpay(options)
           rzp1.on('payment.failed', function (response) {
-            alert(response.error.code)
-            alert(response.error.description)
-            alert(response.error.source)
-            alert(response.error.step)
-            alert(response.error.reason)
-            alert(response.error.metadata.order_id)
-            alert(response.error.metadata.payment_id)
+              alert("payment Failed")
+              navigate("/base/mobile")
+            // alert(response.error.code)
+            // alert(response.error.description)
+            // alert(response.error.source)
+            // alert(response.error.step)
+            // alert(response.error.reason)
+            // alert(response.error.metadata.order_id)
+            // alert(response.error.metadata.payment_id)
           })
           rzp1.open()
           e.preventDefault()
@@ -143,32 +160,6 @@ const Mobile = () => {
         .catch((err) => console.log(err))
     }
   }
-
-  // const validate = (values) => {
-  //   const errors = {}
-
-  //   if (!values.circle) {
-  //     errors.circle = 'select your Circle'
-  //   }
-  //   if (!values.operator) {
-  //     errors.operator = 'select your operator'
-  //   }
-  //   if (!values.mobileNumber) {
-  //     errors.mobileNumber = 'mobile number is required'
-  //   }
-
-  //   if (!values.amount) {
-  //     errors.amount = 'amount is required'
-  //   } else if (values.amount < 10) {
-  //     errors.amount = 'amount must be above 10'
-  //   }
-  //   if (!values.tpin) {
-  //     errors.tpin = 'tpin is required'
-  //   } else if (values.tpin < 4) {
-  //     errors.tpin = 'enter 4 digit number'
-  //   }
-  //   return errors
-  // }
 
 
   return (
@@ -324,7 +315,8 @@ const Mobile = () => {
                         <h6>Amount-{item.rechargeAmount}</h6>
                       </td>
                       <td className="align-middle">
-                        <button className="bg-success text-light rounded">Success</button>
+                        <button className="bg-success text-light rounded border-0">Success</button>
+                        {item.status}
                       </td>
                     </tr>
                   )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -12,11 +12,31 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilMenu, cilWallet } from '@coreui/icons'
-
+import axios from 'axios'
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header/index'
 
 const AppHeader = () => {
+  const [list, updateList] = useState([])
+
+  useEffect(()=>{
+    listLoadWallet()
+    },[])
+
+    const listLoadWallet = () =>{
+      axios.get('https://backend-razo.vercel.app/list/loadWallet/sum')
+      .then((res)=>{
+      const result = res.data;
+      updateList(result)
+      listLoadWallet()
+   
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
+    }
+
+
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
@@ -36,10 +56,17 @@ const AppHeader = () => {
           <CNavItem>
             <CNavLink className="fw-bold">
               <CIcon icon={cilWallet} size="lg" />
-              <span className="px-1"> Main Wallet : 62416.8 /-</span>
+              {
+                list.map((value,index)=>{
+                 return(
+                    <span className="px-1" key={index}> Main Wallet : {value.result}/-</span>
+                 )
+                })
+              }
+            
             </CNavLink>
           </CNavItem>
-          <CNavItem>
+          {/* <CNavItem>
             <CNavLink className="fw-bold">
               <CIcon icon={cilWallet} size="lg" />
               <span className="px-1"> Aeps Wallet : 7572.2 /-</span>
@@ -50,7 +77,7 @@ const AppHeader = () => {
               <CIcon icon={cilWallet} size="lg" />
               <span className="px-1"> Matm Wallet : 42145.2 /-</span>
             </CNavLink>
-          </CNavItem>
+          </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav>
           {/* <CNavItem>
