@@ -6,31 +6,44 @@ import Form from 'react-bootstrap/Form'
 import Table from 'react-bootstrap/Table'
 import { CFormFeedback } from '@coreui/react'
 const Easebuzz = () => {
-  const [validated, setValidated] = useState(false)
+  
+  const [value,setValue]=useState({
+    mobileNumber:""
+  })
+  const onHandle = (e) =>{
+setValue({...value,[e.target.name]:e.target.value})
+  }
+  const [error,setError] =useState({})
   
   const handleSubmit = (event) =>{
-
-    const form = event.currentTarget
-    if (form.checkValidity() === false) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-    setValidated(true)
-  }
+    event.preventDefault();
+    const validateErrors ={}
+    if (!value.mobileNumber.trim()) {
+     validateErrors.mobileNumber = 'mobile number is required'
+   } 
+   else if (value.mobileNumber.length < 10) {
+     validateErrors.mobileNumber = 'mobile number must be above 10'
+   }
+   setError(validateErrors)
+   
+   if(Object.keys(validateErrors).length === 0){
+       console.log(value)
+   }
+ }
   return (
     <div>
       <Row className="m-2">
         <Col md={4} sm={12} className="">
           <div className="shadow p-3 mb-5 bg-white rounded">
            <div className="fw-bold text-light bg-dark p-2  rounded-2">
-              <h5> Easebuzz Payout</h5>
+              <h5>Easebuzz Payout</h5>
             </div>
-            <Form className="m-4 " noValidate validated={validated}
+            <Form className="m-4 "
            onSubmit={handleSubmit}>
               <Form.Group className="mb-3 fw-medium" controlId="formGroupEmail">
                 <Form.Label>Mobile Number</Form.Label>
-                <Form.Control type="number" placeholder="Enter mobile number" className='fw-medium ' required/>
-                <CFormFeedback invalid>Please Enter Mobile Number</CFormFeedback>
+                <Form.Control type="number" placeholder="Enter mobile number" className='fw-medium' name="mobileNumber" onChange={onHandle}/>
+                <CFormFeedback  className='text-danger fs-6'>{error.mobileNumber}</CFormFeedback>
               </Form.Group>
            
             <div className="text-center">

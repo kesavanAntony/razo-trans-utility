@@ -24,7 +24,7 @@ const Raeps = React.lazy(() => import('./views/forms/rAeps/Raeps'))
 const PDMT = React.lazy(() => import('./views/forms/pdmt/PDMT'))
 const Bulkpayout = React.lazy(() => import('./views/forms/bulkpayout/Bulkpayout'))
 
-// const Charts = React.lazy(() => import('./views/charts/Charts'))
+
 
 // Icons
 const LoadWallet = React.lazy(() => import('./views/icons/loadWallet/LoadWallet'))

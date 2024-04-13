@@ -30,17 +30,15 @@ const loadRender = () =>{
   .get('https://backend-razo.vercel.app')
   .then((res) => {
     if (res.data.valid) {
-      navigate("/dashboard")
+      navigate("/")
     } else {
-      navigate('/')
+      navigate('/login')
     }
   })
   .catch((err) => {
     console.log(err)
   })
 }
-  const [name, setName] = useState('')
-
 
   const [validated,setValidated] = useState({}) 
   const [value, setValue] = useState('')

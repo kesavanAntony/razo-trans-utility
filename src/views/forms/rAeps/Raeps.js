@@ -96,7 +96,7 @@ const Rapes = () => {
                 <Form>
                   <Form.Group className="mb-3 fw-bold" controlId="formBasicEmail">
                     <Form.Label>Mobile</Form.Label>
-                    <Form.Control type="text" placeholder="eg:7213709324" />
+                    <Form.Control type="text" placeholder="mobile number" />
                   </Form.Group>
                 </Form>
               </div>

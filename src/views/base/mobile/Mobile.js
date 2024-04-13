@@ -66,6 +66,9 @@ const Mobile = () => {
         if (!value.mobileNumber.trim()) {
           validateErrors.mobileNumber = 'mobile number is required'
         }
+        else if (value.mobileNumber.length < 10) {
+          validateErrors.mobileNumber = 'mobile number must be 10 digit'
+        }
     
         if (!value.amount.trim()) {
           validateErrors.amount = 'amount is required'
@@ -75,7 +78,7 @@ const Mobile = () => {
         }
         if (!value.tpin.trim()) {
           validateErrors.tpin = 'tpin is required'
-        } else if (value.tpin < 4) {
+        } else if (value.tpin.length < 5) {
           validateErrors.tpin = 'enter 4 digit number'
         }
         updateFormError(validateErrors)
@@ -83,19 +86,21 @@ const Mobile = () => {
     
 
     if (Object.keys(validateErrors).length === 0 ) {
-
+        
+    
       axios
         .post('https://backend-razo.vercel.app/order', value)
         .then((res) => {
           const result = res.data
           console.log(result)
           console.log(result.amount)
+          
 
           var options = {
             key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
             amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: result.currency,
-            name: 'Optimista Corp', //your business name
+            name: 'Razo Trans Utility', //your business name
             description: 'Test Transaction',
             image:"https://app.gemoo.com/share/image-annotation/627135246211112960?codeId=vJ32leWg3Jjao&origin=imageurlgenerator",
             order_id: result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -130,9 +135,9 @@ const Mobile = () => {
             },
             prefill: {
               //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-              name: 'kesavan', //your customer's name
+              name: 'razo', //your customer's name
               email: 'xyz@example.com',
-              contact: '9000090000', //Provide the customer's phone number for better conversion rates
+              contact: '044-45270126', //Provide the customer's phone number for better conversion rates
             },
             notes: {
               address: 'Razorpay Corporate Office',

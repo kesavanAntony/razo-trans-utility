@@ -24,7 +24,7 @@ const AppHeader = () => {
     },[])
 
     const listLoadWallet = () =>{
-      axios.get('https://backend-razo.vercel.app/list/loadWallet/sum')
+      axios.get('http://localhost:4000/list/loadWallet/sum')
       .then((res)=>{
       const result = res.data;
       updateList(result)

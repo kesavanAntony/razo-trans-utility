@@ -1,4 +1,4 @@
-import { cilCheck, cilPhone, cilReload, cilXCircle } from '@coreui/icons'
+import { cilCheck, cilPhone, cilReload, cilXCircle,cilSend } from '@coreui/icons'
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import CIcon from '@coreui/icons-react'
@@ -210,17 +210,17 @@ const Dashboard = () => {
                   <tr className="bg-info text-light">
                     <td className="p-2">
                       <img src={require('../img/desk.png')} alt="" width={90} />
-                      <h5 className="fw-bold">Timing - 10 AM to 7 PM</h5>
+                      <h5 className="fw-medium">Timing - 10 AM to 7 PM</h5>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <h5>
+                      <h6 className='p-1'>
                         <CIcon icon={cilPhone} className="me-2" />
                         Call Us:
-                      </h5>
+                      </h6>
                       <p className="">044-45270126</p>
-                      <h5>Email Us:</h5>
+                      <h6 className='p-1'><CIcon icon={cilSend} className="me-2" />Email Us:</h6>
                       <p className="">xyz@gmail.com</p>
                     </td>
                   </tr>
@@ -431,7 +431,7 @@ const Dashboard = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className=''>
                     <tr className="border">
                       <td className="p-2">#</td>
                       <td>Wallet Type</td>
@@ -440,12 +440,12 @@ const Dashboard = () => {
                     <tr className="border">
                       <td className="p-2">₹</td>
                       <td>Utility Balance</td>
-                      <td>1198.66</td>
+                      <td>0</td>
                     </tr>
                     <tr className="border">
                       <td className="p-2">₹</td>
                       <td>Aeps Balance</td>
-                      <td>1198.66</td>
+                      <td>0</td>
                     </tr>
                     <tr className="border">
                       <td className="p-2">₹</td>

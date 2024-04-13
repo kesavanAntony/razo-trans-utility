@@ -10,12 +10,12 @@ const Home = () => {
         <Header />
         <div className="container">
           <div className="row ">
-            <div class="jumbotron my-5 shadow p-3 mb-5 bg-secondary text-light rounded">
-              <h1 class=" text-center">ABOUT US</h1>
-              <p class="lead">
+            <div className="jumbotron my-5 shadow p-3 mb-5 bg-secondary text-light rounded">
+              <h1 className=" text-center">ABOUT US</h1>
+              <p className="lead">
                 <strong>RAZO TRANS</strong> was founded in the Year 2023.
               </p>
-              <hr class="my-4" />
+              <hr className="my-4" />
               <p>
                 Our Aim and Goal is to make digital payments Easy &amp;Safe also ensure that people
                 never felt the need to carry cash again.RAZO TRANS was started with an idea to

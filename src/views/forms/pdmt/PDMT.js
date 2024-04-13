@@ -5,18 +5,30 @@ import { Col, Row, Button } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 import Table from 'react-bootstrap/Table'
 import { CFormFeedback } from '@coreui/react'
-
 const PDMT = () => {
-  const [validated, setValidated] = useState(false)
+  
+  const [value,setValue]=useState({
+    mobileNumber:""
+  })
+  const onHandle = (e) =>{
+setValue({...value,[e.target.name]:e.target.value})
+  }
+  const [error,setError] =useState({})
   
   const handleSubmit = (event) =>{
-
-    const form = event.currentTarget
-    if (form.checkValidity() === false) {
-      event.preventDefault()
-      event.stopPropagation()
+     event.preventDefault();
+     const validateErrors ={}
+     if (!value.mobileNumber.trim()) {
+      validateErrors.mobileNumber = 'mobile number is required'
+    } 
+    else if (value.mobileNumber.length < 10) {
+      validateErrors.mobileNumber = 'mobile number must be 10 digit'
     }
-    setValidated(true)
+    setError(validateErrors)
+    
+    if(Object.keys(validateErrors).length === 0){
+        console.log(value)
+    }
   }
   return (
     <div>
@@ -26,12 +38,12 @@ const PDMT = () => {
            <div className="fw-bold text-light bg-dark p-2  rounded-2">
               <h5> P-Money Transfer</h5>
             </div>
-            <Form className="m-4 " noValidate validated={validated}
+            <Form className="m-4 "
            onSubmit={handleSubmit}>
               <Form.Group className="mb-3 fw-medium" controlId="formGroupEmail">
                 <Form.Label>Mobile Number</Form.Label>
-                <Form.Control type="number" placeholder="Enter mobile number" className='fw-medium ' required/>
-                <CFormFeedback invalid>Please Enter Mobile Number</CFormFeedback>
+                <Form.Control type="number" placeholder="Enter mobile number" className='fw-medium' name="mobileNumber" onChange={onHandle}/>
+                <CFormFeedback  className='text-danger fs-6'>{error.mobileNumber}</CFormFeedback>
               </Form.Group>
            
             <div className="text-center">

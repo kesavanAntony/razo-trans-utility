@@ -12,12 +12,13 @@ import Termcondition from './home/screen/Termcondition';
 import Returnrefund from './home/screen/Returnrefund';
 import Contact from './home/screen/Contact';
 import Privacy from './home/screen/Privacy';
+import DataSharing from './DataSharing';
 
-const loading = (
-  <div className="pt-3 text-center">
-    <div className="sk-spinner sk-spinner-pulse"></div>
-  </div>
-)
+// const loading = (
+//   <div className="pt-3 text-center">
+//     <div className="sk-spinner sk-spinner-pulse"></div>
+//   </div>
+// )
 
 
 
@@ -31,28 +32,32 @@ const loading = (
 
 
 
-class App extends Component {
-  render() {
+const App =() => {
+
+ 
+
     return (
-      <BrowserRouter>
-        <Suspense fallback={loading}>
+        <BrowserRouter>
+        {/* <Suspense fallback={loading}> */}
           <Routes> 
-            <Route  path="" name="Home" element={<Home />} />
-            <Route  path="/login" name="Login Page" element={<Login />} />
-            <Route  path="/privacy" name="Shipping Page" element={<Privacy />} />
+            <Route  exact path="" name="Home" element={<Home />} />
+            <Route  exact path="/login" name="Login Page" element={<Login />} />
+            <Route  exact path="/privacy" name="Shipping Page" element={<Privacy />} />
             
-            <Route  path="/terms" name="Terms Page" element={<Termcondition />} />
-            <Route  path="/refund" name="Refund Page" element={<Returnrefund />} />
-            <Route  path="/contact" name="Contact Page" element={<Contact/>}/>
-            <Route path="/register" name="Register Page" element={<Register />} />
-            <Route path="/404" name="Page 404" element={<Page404 />} />
-            <Route path="/505" name="Page 500" element={<Page500 />} />
-            <Route path="*" name="Layout" element={<DefaultLayout />} />
+            <Route  exact path="/terms" name="Terms Page" element={<Termcondition />} />
+            <Route  exact path="/refund" name="Refund Page" element={<Returnrefund />} />
+            <Route  exact path="/contact" name="Contact Page" element={<Contact/>}/>
+            <Route exact path="/register" name="Register Page" element={<Register />} />
+            <Route exact path="/404" name="Page 404" element={<Page404 />} />
+            <Route exact path="/505" name="Page 500" element={<Page500 />} />
+            <Route exact path="*" name="Layout" element={<DefaultLayout />} />
           </Routes>
-        </Suspense>
+        {/* </Suspense> */}
       </BrowserRouter>
+
+      
     )
   }
-}
+
 
 export default App
