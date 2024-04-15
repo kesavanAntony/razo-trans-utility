@@ -28,7 +28,6 @@ const AppHeader = () => {
       .then((res)=>{
       const result = res.data;
       updateList(result)
-      listLoadWallet()
    
       })
       .catch((error)=>{
