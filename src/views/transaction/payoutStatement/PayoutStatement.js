@@ -45,7 +45,7 @@ const PayoutStatement = () => {
            </div>
 
            <div>
-             <input type="date" className="rounded fw-bold" />
+             <input type="date" className="rounded fw-bold w-100 text-center" />
            </div>
          </Col>
          <Col md={3} sm={12} className="text-center p-2">
@@ -54,7 +54,7 @@ const PayoutStatement = () => {
            </div>
            <div>
              {' '}
-             <input type="date" className="rounded fw-bold" />
+             <input type="date" className="rounded fw-bold w-100 text-center" />
            </div>
          </Col>
          <Col md={3} sm={12} className="text-center p-2 align-center">
@@ -65,13 +65,13 @@ const PayoutStatement = () => {
              <input
                type="text"
                placeholder="Search Value"
-               className="rounded fw-medium text-black"
+               className="rounded fw-medium text-black w-100 text-center"
              />
            </div>
          </Col>
          <Col md={3} sm={12} className="text-center p-2 align-center">
               <div> <label className="p-2 h6">Status</label></div>
-             <div><select className="rounded fw-medium h-30 p-1 border-2">
+             <div><select className="rounded fw-medium h-30 w-100 text-center border-2">
                 <option disabled>Select Fund Status</option>
                 <option>Success</option>
                 <option>Pending</option>

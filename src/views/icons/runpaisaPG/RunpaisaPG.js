@@ -14,7 +14,7 @@ const RunpaisaPG= () => {
   const [lgShow, setLgShow] = useState(false)
 
   
-  const handleSubmit = (event) =>{
+  const handleSubmit = (e) =>{
 
     e.preventDefault()
          const validateErrors={} ;
@@ -157,7 +157,7 @@ const RunpaisaPG= () => {
               </div>
 
               <div>
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
             <Col md={4} sm={12} className="text-center p-2">
@@ -166,7 +166,7 @@ const RunpaisaPG= () => {
               </div>
               <div>
                 {' '}
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
             <Col md={4} sm={12} className="text-center p-2 align-center">
@@ -177,7 +177,7 @@ const RunpaisaPG= () => {
                 <input
                   type="text"
                   placeholder="Search Value"
-                  className="rounded fw-medium text-black"
+                  className="rounded fw-medium text-black w-100 text-center"
                 />
               </div>
             </Col>
@@ -185,7 +185,7 @@ const RunpaisaPG= () => {
           <Row>
           <Col md={4} sm={12} className="text-center p-2 align-center">
               <div> <label className="p-2 h6">Status</label></div>
-             <div><select className="rounded fw-medium h-30 p-1 border-2">
+             <div><select className="rounded fw-medium h-30  border-2 w-100 text-center">
                 <option defaultChecked>Select Fund Status</option>
                 <option>Success</option>
                 <option>Failed</option>
@@ -244,7 +244,7 @@ const RunpaisaPG= () => {
         <Modal.Header closeButton className='bg-secondary text-light'>
           <Modal.Title id="example-modal-sizes-title-lg" >Wallet Fund Request</Modal.Title>
         </Modal.Header>
-        <CForm noValidate validated={validated}
+        <CForm 
            onSubmit={handleSubmit}>
         <Modal.Body>
           <Row>

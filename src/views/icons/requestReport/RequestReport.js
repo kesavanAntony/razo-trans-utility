@@ -47,7 +47,7 @@ const RequestReport= () => {
               </div>
 
               <div>
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
             <Col md={4} sm={12} className="text-center p-2">
@@ -56,7 +56,7 @@ const RequestReport= () => {
               </div>
               <div>
                 {' '}
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
             <Col md={4} sm={12} className="text-center p-2 align-center">
@@ -67,7 +67,7 @@ const RequestReport= () => {
                 <input
                   type="text"
                   placeholder="Search Value"
-                  className="rounded fw-medium text-black"
+                  className="rounded fw-medium text-black w-100 text-center"
                 />
               </div>
             </Col>

@@ -44,7 +44,7 @@ const Pending = () => {
            </div>
 
            <div>
-             <input type="date" className="rounded fw-bold" />
+             <input type="date" className="rounded fw-bold w-100 text-center" />
            </div>
          </Col>
          <Col md={4} sm={12} className="text-center p-2">
@@ -53,7 +53,7 @@ const Pending = () => {
            </div>
            <div>
              {' '}
-             <input type="date" className="rounded fw-bold" />
+             <input type="date" className="rounded fw-bold w-100 text-center" />
            </div>
          </Col>
          <Col md={3} sm={12} className="text-center p-2 align-center">
@@ -64,7 +64,7 @@ const Pending = () => {
              <input
                type="text"
                placeholder="Search Value"
-               className="rounded fw-medium text-black"
+               className="rounded fw-medium text-black w-100 text-center"
              />
            </div>
          </Col>
@@ -73,7 +73,7 @@ const Pending = () => {
        <Row>
          <Col md={4} sm={12} className="text-center p-2 align-center">
               <div> <label className="p-2 h6">Status</label></div>
-             <div><select className="rounded fw-medium h-30 p-1 border-2">
+             <div><select className="rounded fw-medium h-30 w-100 text-center border-2">
                 <option>Select Fund Status</option>
                 <option>Success</option>
                 <option>Failed</option>
@@ -85,7 +85,7 @@ const Pending = () => {
             </Col>
             <Col md={4} sm={12} className="text-center p-2 align-center">
               <div> <label className="p-2 h6">Transaction</label></div>
-             <div><select className="rounded fw-medium h-30 p-1 border-2">
+             <div><select className="rounded fw-medium h-30 w-100 text-center border-2">
                 <option>Select Transaction</option>
                 <option>Move to Wallet</option>
                 <option>Move to Bank</option>

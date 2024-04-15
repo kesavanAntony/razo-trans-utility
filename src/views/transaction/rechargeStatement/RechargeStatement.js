@@ -42,26 +42,26 @@ const RechargeStatement = () => {
       <div className="shadow p-3 mb-5 bg-white rounded">
         <Container>
           <Row>
-            <Col md={3} sm={12} className="text-center p-2">
+            <Col md={4} sm={12} className="text-center p-2">
               <div>
                 {' '}
                 <label className="p-2 h6">Starting Date</label>
               </div>
 
               <div>
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
-            <Col md={3} sm={12} className="text-center p-2">
+            <Col md={4} sm={12} className="text-center p-2">
               <div>
                 <label className="p-2 h6">Ending Date</label>
               </div>
               <div>
                 {' '}
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
-            <Col md={3} sm={12} className="text-center p-2 align-center">
+            <Col md={4} sm={12} className="text-center p-2 align-center">
               <div>
                 <label className="p-2 h6">Value</label>
               </div>
@@ -69,19 +69,19 @@ const RechargeStatement = () => {
                 <input
                   type="text"
                   placeholder="Search Value"
-                  className="rounded fw-medium text-black "
+                  className="rounded fw-medium text-black w-100 text-center"
                 />
               </div>
             </Col>
           </Row>
           <Row>
-            <Col md={3} sm={12} className="text-center p-2 align-center">
+            <Col md={4} sm={12} className="text-center p-2 align-center">
               <div>
                 {' '}
                 <label className="p-2 h6">Status</label>
               </div>
               <div>
-                <select className="rounded fw-medium h-30 p-1 border-2">
+                <select className="rounded fw-medium h-30 w-100 text-center border-2">
                   <option>Select Fund Status</option>
                   <option>Success</option>
                   <option>Pending</option>
@@ -90,13 +90,13 @@ const RechargeStatement = () => {
                 </select>
               </div>
             </Col>
-            <Col md={3} sm={12} className="text-center p-2 align-center">
+            <Col md={4} sm={12} className="text-center p-2 align-center">
               <div>
                 {' '}
                 <label className="p-2 h6">Biller</label>
               </div>
               <div>
-                <select className="rounded fw-medium h-30 p-1 border-2">
+                <select className="rounded fw-medium h-30 w-100 text-center border-2">
                   <option>Select Operator</option>
                   <option >VODAFONE</option>
                   <option >BSNL</option>

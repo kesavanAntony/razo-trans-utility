@@ -10,6 +10,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import Randomstring from 'randomstring'
 import { useNavigate } from "react-router-dom";
+import { Value } from 'sass'
 
 const Mobile = () => {
 
@@ -54,6 +55,51 @@ const Mobile = () => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
 
+//   const generateLink = () =>{
+   
+//     const validateErrors={} ;
+// if (!value.circle.trim()) {
+//  validateErrors.circle = 'select your Circle'
+//    }
+//    if (!value.operator.trim()) {
+//      validateErrors.operator = 'select your operator'
+//    }
+//    if (!value.mobileNumber.trim()) {
+//      validateErrors.mobileNumber = 'mobile number is required'
+//    }
+//    else if (value.mobileNumber.length < 10) {
+//      validateErrors.mobileNumber = 'mobile number must be 10 digit'
+//    }
+
+//    if (!value.amount.trim()) {
+//      validateErrors.amount = 'amount is required'
+//    } 
+//    else if (value.amount < 10) {
+//      validateErrors.amount = 'amount must be above 10'
+//    }
+//    if (!value.tpin.trim()) {
+//      validateErrors.tpin = 'tpin is required'
+//    } else if (value.tpin.length < 4) {
+//      validateErrors.tpin = 'enter 4 digit number'
+//    }
+//    updateFormError(validateErrors)
+
+
+
+// if (Object.keys(validateErrors).length === 0 ) {
+// const url = "https://backend-razo.vercel.app/v1/payment_links";
+// axios.post(url,value)
+// .then((res)=>{
+// const result = res.data;
+// console.log(result)
+// })
+// .catch((err)=>{
+// console.log(err)
+// })
+// }
+
+//   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
          const validateErrors={} ;
@@ -78,7 +124,7 @@ const Mobile = () => {
         }
         if (!value.tpin.trim()) {
           validateErrors.tpin = 'tpin is required'
-        } else if (value.tpin.length < 5) {
+        } else if (value.tpin.length < 4) {
           validateErrors.tpin = 'enter 4 digit number'
         }
         updateFormError(validateErrors)
@@ -93,7 +139,6 @@ const Mobile = () => {
         .then((res) => {
           const result = res.data
           console.log(result)
-          console.log(result.amount)
           
 
           var options = {
@@ -137,7 +182,7 @@ const Mobile = () => {
               //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
               name: 'razo', //your customer's name
               email: 'xyz@example.com',
-              contact: '044-45270126', //Provide the customer's phone number for better conversion rates
+              contact: value.mobileNumber, //Provide the customer's phone number for better conversion rates
             },
             notes: {
               address: 'Razorpay Corporate Office',
@@ -286,6 +331,10 @@ const Mobile = () => {
                   <CIcon icon={cilCursor} className="me-2" />
                   Pay Now
                 </Button>
+                {/* <Button className="text-italic mx-2 my-2" onClick={()=>generateLink()}>
+                  <CIcon icon={cilCursor} className="me-2" />
+                 Generate Link
+                </Button> */}
               </div>
             </Form>
           </div>

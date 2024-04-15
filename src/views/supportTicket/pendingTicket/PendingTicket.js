@@ -45,7 +45,7 @@ const PendingTicket= () => {
               </div>
 
               <div>
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
             <Col md={4} sm={12} className="text-center p-2">
@@ -54,7 +54,7 @@ const PendingTicket= () => {
               </div>
               <div>
                 {' '}
-                <input type="date" className="rounded fw-bold" />
+                <input type="date" className="rounded fw-bold w-100 text-center" />
               </div>
             </Col>
             <Col md={4} sm={12} className="text-center p-2 align-center">
@@ -65,7 +65,7 @@ const PendingTicket= () => {
                 <input
                   type="text"
                   placeholder="Search Value"
-                  className="rounded fw-medium text-black"
+                  className="rounded fw-medium text-black w-100 text-center"
                 />
               </div>
             </Col>
@@ -73,7 +73,7 @@ const PendingTicket= () => {
           <Row>
           <Col md={4} sm={12} className="text-center p-2 align-center">
               <div> <label className="p-2 h6">Service</label></div>
-             <div><select className="rounded fw-medium h-30 p-1 border-2">
+             <div><select className="rounded fw-medium h-30 w-100 text-center border-2">
                 <option disabled>Select Service</option>
                 <option>Recharge</option>
                 <option>Bill Pay</option>

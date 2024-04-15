@@ -1,5 +1,6 @@
 import React from 'react'
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink } from 'react-router-dom';
 // import {
 //   CAvatar,
 //   CDropdown,
@@ -20,12 +21,16 @@ const AppHeaderDropdown = () => {
 
       
     <NavDropdown title="User" id="basic-nav-dropdown" className='fw-bold bg-light'>
-    <NavDropdown.Item href="#action/3.2">
-    <CIcon icon={cilSettings} className="me-2" /> Login
+    
+      <NavLink to="/login" className="text-decoration-none"><NavDropdown.Item href="#action/3.2"> <CIcon icon={cilSettings} className="me-2" /> Login
     </NavDropdown.Item>
-    <NavDropdown.Item href="#action/3.3">
+    </NavLink>
+   <NavLink to="/accountSetting/profileSetting" className="text-decoration-none">
+     <NavDropdown.Item href="#action/3.3">
     <CIcon icon={cilUser} className="me-2" />Profile
     </NavDropdown.Item>
+   </NavLink>
+   
     <NavDropdown.Divider />
     <NavDropdown.Item href="#action/3.4">
     <CIcon icon={cilCreditCard} className="me-2" />Logout

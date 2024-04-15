@@ -211,7 +211,7 @@ const Dth = () => {
                 </div>
               </Form.Group>
             
-            <div className="text-center">
+            <div className="text-center mb-3">
               <Button className="text-italic" type="submit">
                 {' '}
                 <CIcon icon={cilCursor} className="me-2" />
