@@ -331,10 +331,10 @@ const Mobile = () => {
                   <CIcon icon={cilCursor} className="me-2" />
                   Pay Now
                 </Button>
-                {/* <Button className="text-italic mx-2 my-2" onClick={()=>generateLink()}>
+                <Button className="text-italic mx-2 my-2" onClick={()=>generateLink()}>
                   <CIcon icon={cilCursor} className="me-2" />
-                 Generate Link
-                </Button> */}
+                 Generate Payment Link
+                </Button>
               </div>
             </Form>
           </div>
