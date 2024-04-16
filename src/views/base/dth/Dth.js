@@ -25,6 +25,7 @@ const Dth = () => {
     dthNumber:"",
     amount:"",
     tpin:"",
+    mobileNumber:"",
     currency: 'INR',
     receiptID: randomString,
   })
@@ -164,7 +165,51 @@ const Dth = () => {
           .catch((err) => console.log(err))
       }
     }
+
+
+  const generateLink = () =>{
+   
+    const validateErrors={} ;
+    if (!value.operator.trim()) {
+      validateErrors.operator = 'select your operator'
+    }
+    if (!value.dthNumber.trim()) {
+      validateErrors.dthNumber = 'dth number is required'
+    }
+
+    if (!value.amount.trim()) {
+      validateErrors.amount = 'amount is required'
+    } 
+    else if (value.amount < 100) {
+      validateErrors.amount = 'amount must be above 10'
+    }
+    if (!value.tpin.trim()) {
+      validateErrors.tpin = 'tpin is required'
+    } else if (value.tpin < 4) {
+      validateErrors.tpin = 'enter 4 digit number'
+    }
+    updateFormError(validateErrors)
+
   
+  
+  
+  if (Object.keys(validateErrors).length === 0 ) {
+  
+  
+    axios
+    .post('https://backend-razo.vercel.app/payment/link', value)
+    .then((res) => {
+      const result = res.data
+      window.alert("payment link sent...")
+      console.log(result)
+    })
+    .catch((err)=>{
+      alert("something went to wrong")
+  console.log(err)
+    })
+   
+    }
+  }
 
   return (
     <div>
@@ -194,12 +239,17 @@ const Dth = () => {
                 <Form.Control type="number" placeholder="Enter dth number"  name='dthNumber' onChange={onHandle} value={value.dthNumber}/>
                 <CFormFeedback className="text-danger fw-medium">{formError.dthNumber}</CFormFeedback>
               </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label className='fw-medium'>Mobile Number</Form.Label>
+                <Form.Control type="number" placeholder="Enter mobile number"  name='mobileNumber' onChange={onHandle} value={value.mobileNumber}/>
+                <CFormFeedback className="text-danger fw-medium">{formError.dthNumber}</CFormFeedback>
+              </Form.Group>
               <Form.Group className="mb-3" >
                 <Form.Label className='fw-medium'>Recharge Amount</Form.Label>
                 <Form.Control type="number" placeholder="Enter dth amount" name='amount'  onChange={onHandle} value={value.amount}/>
                 <CFormFeedback className="text-danger fw-medium">{formError.amount}</CFormFeedback>
                 <div className='mt-1'>
-               <button className='text-light rounded bg-info border-0'>Plan</button>
+               <a href='#' className='text-light btn rounded bg-info border-0'>Plan</a>
                   </div>
               </Form.Group>
               <Form.Group className="mb-3">

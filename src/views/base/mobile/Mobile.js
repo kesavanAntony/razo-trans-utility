@@ -55,50 +55,54 @@ const Mobile = () => {
     setValue({ ...value, [e.target.name]: e.target.value })
   }
 
-//   const generateLink = () =>{
+  const generateLink = () =>{
    
-//     const validateErrors={} ;
-// if (!value.circle.trim()) {
-//  validateErrors.circle = 'select your Circle'
-//    }
-//    if (!value.operator.trim()) {
-//      validateErrors.operator = 'select your operator'
-//    }
-//    if (!value.mobileNumber.trim()) {
-//      validateErrors.mobileNumber = 'mobile number is required'
-//    }
-//    else if (value.mobileNumber.length < 10) {
-//      validateErrors.mobileNumber = 'mobile number must be 10 digit'
-//    }
+    const validateErrors={} ;
+if (!value.circle.trim()) {
+ validateErrors.circle = 'select your Circle'
+   }
+   if (!value.operator.trim()) {
+     validateErrors.operator = 'select your operator'
+   }
+   if (!value.mobileNumber.trim()) {
+     validateErrors.mobileNumber = 'mobile number is required'
+   }
+   else if (value.mobileNumber.length < 10) {
+     validateErrors.mobileNumber = 'mobile number must be 10 digit'
+   }
 
-//    if (!value.amount.trim()) {
-//      validateErrors.amount = 'amount is required'
-//    } 
-//    else if (value.amount < 10) {
-//      validateErrors.amount = 'amount must be above 10'
-//    }
-//    if (!value.tpin.trim()) {
-//      validateErrors.tpin = 'tpin is required'
-//    } else if (value.tpin.length < 4) {
-//      validateErrors.tpin = 'enter 4 digit number'
-//    }
-//    updateFormError(validateErrors)
+   if (!value.amount.trim()) {
+     validateErrors.amount = 'amount is required'
+   } 
+   else if (value.amount < 10) {
+     validateErrors.amount = 'amount must be above 10'
+   }
+   if (!value.tpin.trim()) {
+     validateErrors.tpin = 'tpin is required'
+   } else if (value.tpin.length < 4) {
+     validateErrors.tpin = 'enter 4 digit number'
+   }
+   updateFormError(validateErrors)
 
 
 
-// if (Object.keys(validateErrors).length === 0 ) {
-// const url = "https://backend-razo.vercel.app/v1/payment_links";
-// axios.post(url,value)
-// .then((res)=>{
-// const result = res.data;
-// console.log(result)
-// })
-// .catch((err)=>{
-// console.log(err)
-// })
-// }
+if (Object.keys(validateErrors).length === 0 ) {
 
-//   }
+
+  axios
+  .post('https://backend-razo.vercel.app/payment/link', value)
+  .then((res) => {
+    const result = res.data
+   alert("payment link sent...")
+    console.log(result)
+  })
+  .catch((err)=>{
+    alert("something went to wrong")
+console.log(err)
+  })
+ 
+  }
+}
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -207,7 +211,7 @@ const Mobile = () => {
           rzp1.open()
           e.preventDefault()
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log("something went to wrong"))
     }
   }
 
@@ -308,7 +312,7 @@ const Mobile = () => {
                 <CFormFeedback className="text-danger fw-medium">{formError.amount}</CFormFeedback>
 
                 <div className="mt-1">
-                  <button className="text-light rounded bg-info border-0">Plan</button>
+                  <a href='#' className="text-light rounded btn bg-info border-0">Plan</a>
                 </div>
               </Form.Group>
               <Form.Group className="mb-3">

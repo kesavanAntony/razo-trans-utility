@@ -333,11 +333,16 @@ const LoadWallet = () => {
               </div>
             </div> */}
             {/* <div className="p-2">
-              <label className=" w-100 h6">Ending Date</label>
+              <label className="h6 w-100">Ref No.</label>
               <div>
-              <CFormInput type="date" id="validationCustom01" required onChange={onHandle} name='endingDate'/>
+              <CFormInput
+                type="text"
+                placeholder="Enter Reference Number"
+                className="rounded fw-medium text-black" required onChange={onHandle} name='refNo'
+              />  
               </div>
-              <CFormFeedback invalid>Please select Date</CFormFeedback>
+              <CFormFeedback invalid>Please Enter Reference Number</CFormFeedback>
+              
             </div> */}
              <div className="p-2">
                <label className="h6 w-100">Amount</label>
