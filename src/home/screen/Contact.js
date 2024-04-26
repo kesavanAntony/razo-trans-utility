@@ -16,8 +16,8 @@ const Contact = () => {
               <Card.Header className="bg-dark text-light ">Contact</Card.Header>
               <Card.Body>
                 <Card.Title>For Quick Answer</Card.Title>
-                <Card.Text>+91 82200 52520</Card.Text>
-                <Card.Text>+91 98842 14440</Card.Text>
+                <Card.Text>+91 9941021198</Card.Text> 
+                <Card.Text>+91 9941021198</Card.Text> 
               </Card.Body>
             </Card>
           </div>
@@ -27,8 +27,8 @@ const Contact = () => {
               <Card.Header className="bg-dark text-light">Email</Card.Header>
               <Card.Body>
                 <Card.Title>Customer Support</Card.Title>
-                <Card.Text>varada@optimista.in</Card.Text>
-                <Card.Text> support@optimista.in</Card.Text>
+                <Card.Text>xyz@gmail.in</Card.Text>
+                <Card.Text>abcd@gmail.in</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -39,8 +39,7 @@ const Contact = () => {
               <Card.Body>
                 <Card.Title>Location</Card.Title>
                 <Card.Text>
-                  #1503, 1st Floor, 1st Main Road, T.S.Krishna Nagar (School Road), Mogappair East,
-                  Chennai - 37
+                  xyz...
                 </Card.Text>
               </Card.Body>
             </Card>

@@ -79,7 +79,7 @@ const Easebuzz= () => {
             key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
             amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: result.currency,
-            name: 'Optimista Corp', //your business name
+            name: 'Razo Trans Utility', //your business name
             description: 'Test Transaction',
             image:"https://app.gemoo.com/share/image-annotation/627135246211112960?codeId=vJ32leWg3Jjao&origin=imageurlgenerator",
             order_id: result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
