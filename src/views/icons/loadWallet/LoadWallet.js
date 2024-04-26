@@ -64,7 +64,13 @@ const LoadWallet = () => {
 
     e.preventDefault()
          const validateErrors={} ;
-   
+        
+         if (!value.mobileNumber.trim()) {
+          validateErrors.mobileNumber = 'mobile number is required'
+        }
+        else if (value.mobileNumber.length < 10) {
+          validateErrors.mobileNumber = 'mobile number must be 10 digit'
+        }
         if (!value.remarks.trim()) {
           validateErrors.remarks = 'remarks required'
         }
