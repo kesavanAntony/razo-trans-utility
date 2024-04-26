@@ -27,6 +27,7 @@ const LoadWallet = () => {
   const [value,setValue]=useState({
     remarks: '',
     amount: '',
+    mobileNumber:'',
     currency: 'INR',
     receiptID: randomString,
   })
@@ -156,6 +157,48 @@ const LoadWallet = () => {
     }
   }
   
+  const generateLink = () =>{
+   
+    const validateErrors={} ;
+   
+    if (!value.mobileNumber.trim()) {
+      validateErrors.mobileNumber = 'mobile number is required'
+    }
+    else if (value.mobileNumber.length < 10) {
+      validateErrors.mobileNumber = 'mobile number must be 10 digit'
+    }
+    if (!value.remarks.trim()) {
+      validateErrors.remarks = 'remarks required'
+    }
+    if (!value.amount.trim()) {
+      validateErrors.amount = 'amount is required'
+    } 
+    else if (value.amount < 10) {
+      validateErrors.amount = 'amount must be above 10'
+    }
+
+    updateFormError(validateErrors)
+
+
+
+
+if (Object.keys(validateErrors).length === 0 ) {
+
+
+  axios
+  .post('https://backend-razo.vercel.app/payment/link', value)
+  .then((res) => {
+    const result = res.data
+   alert("payment link sent...")
+    console.log(result)
+  })
+  .catch((err)=>{
+    alert("something went to wrong")
+console.log(err)
+  })
+ 
+  }
+}
 
   return (
     <div className="">
@@ -344,6 +387,18 @@ const LoadWallet = () => {
               <CFormFeedback invalid>Please Enter Reference Number</CFormFeedback>
               
             </div> */}
+                 <div className="p-2">
+               <label className="h6 w-100">Mobile Number</label>
+            <div>
+              <CFormInput
+                type="number"
+                placeholder="Enter number"
+                className="rounded fw-medium text-black"  onChange={onHandle} name='mobileNumber'
+              />
+            </div>
+            <CFormFeedback className="text-danger fw-medium border-0">{formError.mobileNumber}</CFormFeedback>
+            </div>
+
              <div className="p-2">
                <label className="h6 w-100">Amount</label>
             <div>
@@ -412,6 +467,7 @@ const LoadWallet = () => {
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setLgShow(false)}>Cancel</Button>
           <Button variant="primary" type='submit'>Submit</Button>
+          <Button variant="info" onClick={()=>generateLink()}>Send Link</Button>
         </Modal.Footer> 
         </CForm>
       </Modal>
