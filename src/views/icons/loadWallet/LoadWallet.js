@@ -483,7 +483,7 @@ console.log(err)
           <div className="shadow p-3 mb-5 bg-white rounded">
             <div className="fw-bold text-light bg-black p-2 rounded d-flex flex-row justify-content-between ">
               <h5 className="align-center">Wallet Load Request</h5>
-              <button className="btn btn-light fw-medium rounded" onClick={() => setLgShow(true)}>
+              <button className="btn btn-light fw-medium rounde btn-sm" onClick={() => setLgShow(true)}>
                 <CIcon icon={cilPlus} className="me-2" />
                 NEW REQUEST
               </button>

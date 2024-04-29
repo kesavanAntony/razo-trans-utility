@@ -7,22 +7,50 @@ import Button from 'react-bootstrap/Button'
 import React,{useState} from 'react'
 import { cilPlus} from '@coreui/icons'
 import Modal from 'react-bootstrap/Modal';
-import { CForm, CFormInput } from '@coreui/react'
+import { CForm, CFormInput } from '@coreui/react';
+import Randomstring from 'randomstring';
+import { CFormFeedback } from '@coreui/react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
 
 const RunpaisaPG= () => {
 
   const [lgShow, setLgShow] = useState(false)
+  const [formError, updateFormError] = useState({})
+  const navigate =useNavigate()
 
+  const randomString = Randomstring.generate({
+    length:8,
+    charset:'alphabetic'
+  });
+
+  const [value, setValue] = useState({
+    mobileNumber: '',
+    amount: '',
+    email: '',
+    remark:'',
+    currency: 'INR',
+    receiptID: randomString,
+
+  })
+ const onHandle = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value })
+  }
   
   const handleSubmit = (e) =>{
 
     e.preventDefault()
          const validateErrors={} ;
-    if (!value.circle.trim()) {
-      validateErrors.circle = 'select your Circle'
+         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    if (!value.email.trim()) {
+      validateErrors.email = 'email is required'
         }
-        if (!value.operator.trim()) {
-          validateErrors.operator = 'select your operator'
+        else if(!regex.test(value.email)){
+          validateErrors.email = 'enter valid email'
+        }
+        if (!value.remark.trim()) {
+          validateErrors.remark = 'remark is required'
         }
         if (!value.mobileNumber.trim()) {
           validateErrors.mobileNumber = 'mobile number is required'
@@ -33,11 +61,6 @@ const RunpaisaPG= () => {
         } 
         else if (value.amount < 10) {
           validateErrors.amount = 'amount must be above 10'
-        }
-        if (!value.tpin.trim()) {
-          validateErrors.tpin = 'tpin is required'
-        } else if (value.tpin < 4) {
-          validateErrors.tpin = 'enter 4 digit number'
         }
         updateFormError(validateErrors)
 
@@ -53,7 +76,7 @@ const RunpaisaPG= () => {
           console.log(result.amount)
 
           var options = {
-            key: 'rzp_test_HSh1OxvyzNSxbn', // Enter the Key ID generated from the Dashboard
+            key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
             amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: result.currency,
             name: 'Razo Trans Utility', //your business name
@@ -73,14 +96,13 @@ const RunpaisaPG= () => {
               })
               const jsonRes = await validateRes.json()
              if(jsonRes.msg === "success"){
-             
-               axios.post("https://backend-razo.vercel.app/mobile/recharge",value)
+              console.log(jsonRes)
+               axios.post("https://backend-razo.vercel.app/wallet/easebuzzpg",value)
                .then((response)=>{
                const result = response.data;
                if(result.message === "success"){
-                alert("payement successs");
-                navigate("/base/mobile")
-                listMobileRecharge();
+                alert("requested sent");
+                navigate("/icons/easeBuzz")
                }
                })
                .catch((error)=>{
@@ -120,6 +142,52 @@ const RunpaisaPG= () => {
         .catch((err) => console.log(err))
     }
   }
+
+  const generateLink = () =>{
+   
+    const validateErrors={} ;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+if (!value.email.trim()) {
+ validateErrors.email = 'email is required'
+   }
+   else if(!regex.test(value.email)){
+     validateErrors.email = 'enter valid email'
+   }
+   if (!value.remark.trim()) {
+     validateErrors.remark = 'remark is required'
+   }
+   if (!value.mobileNumber.trim()) {
+     validateErrors.mobileNumber = 'mobile number is required'
+   }
+
+   if (!value.amount.trim()) {
+     validateErrors.amount = 'amount is required'
+   } 
+   else if (value.amount < 10) {
+     validateErrors.amount = 'amount must be above 10'
+   }
+   updateFormError(validateErrors)
+
+
+
+
+if (Object.keys(validateErrors).length === 0 ) {
+
+
+  axios
+  .post('https://backend-razo.vercel.app/payment/link', value)
+  .then((res) => {
+    const result = res.data
+   alert("payment link sent...")
+    console.log(result)
+  })
+  .catch((err)=>{
+    alert("something went to wrong")
+console.log(err)
+  })
+ 
+  }
+}
 
   return (
     <div>
@@ -185,7 +253,7 @@ const RunpaisaPG= () => {
           <Row>
           <Col md={4} sm={12} className="text-center p-2 align-center">
               <div> <label className="p-2 h6">Status</label></div>
-             <div><select className="rounded fw-medium h-30  border-2 w-100 text-center">
+             <div><select className="rounded fw-medium h-30 border-2 w-100 text-center">
                 <option defaultChecked>Select Fund Status</option>
                 <option>Success</option>
                 <option>Failed</option>
@@ -203,8 +271,8 @@ const RunpaisaPG= () => {
           <div className="shadow p-3 mb-5 bg-white rounded">
             <div className="fw-bold text-light bg-black p-2 rounded d-flex flex-row justify-content-between ">
               <h5 className="align-center">Runpaisa PG Request</h5>
-              <button className="btn btn-light fw-medium rounded" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>NEW REQUEST</button>
-              <button className="btn btn-light fw-medium rounded" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>Get Link</button>
+              <button className="btn btn-light fw-medium rounded btn-sm" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>NEW REQUEST</button>
+              <button className="btn btn-light fw-medium rounded btn-sm" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>Get Link</button>
             </div>
             <Table responsive>
               <thead>
@@ -234,8 +302,8 @@ const RunpaisaPG= () => {
           </div>
         </Col>
         </Row>
-             {/* modal */}
-             <Modal
+         {/* modal */}
+         <Modal
         size="lg"
         show={lgShow}
         onHide={() => setLgShow(false)}
@@ -256,8 +324,9 @@ const RunpaisaPG= () => {
             <CFormInput
                 type="text"
                 placeholder="Enter Mobile"
-                className="rounded fw-medium text-black w-100" required
-              />  
+                className="rounded fw-medium text-black w-100" name='mobileNumber' onChange={onHandle} value={value.mobileNumber}
+              /> 
+              <CFormFeedback className="text-danger fw-medium">{formError.mobileNumber}</CFormFeedback> 
               </div>
             </div>
             <div className="p-2">
@@ -266,8 +335,9 @@ const RunpaisaPG= () => {
               <CFormInput
                 type="text"
                 placeholder="Enter Remark"
-                className="rounded fw-medium text-black" required
+                className="rounded fw-medium text-black" name="remark" onChange={onHandle} value={value.remark}
               />
+              <CFormFeedback className="text-danger fw-medium">{formError.remark}</CFormFeedback>
             </div>
             </div>
           </Col>
@@ -278,8 +348,9 @@ const RunpaisaPG= () => {
               <CFormInput
                 type="text"
                 placeholder="Enter Amount"
-                className="rounded fw-medium text-black" required
+                className="rounded fw-medium text-black" name='amount' onChange={onHandle} value={value.amount}
               />
+              <CFormFeedback className="text-danger fw-medium">{formError.amount}</CFormFeedback>
             </div>
             </div>
            
@@ -291,22 +362,24 @@ const RunpaisaPG= () => {
               <CFormInput
                 type="text"
                 placeholder="Enter Email"
-                className="rounded fw-medium text-black" required
+                className="rounded fw-medium text-black" name='email' onChange={onHandle} value={value.email}
               />
+              <CFormFeedback className="text-danger fw-medium">{formError.email}</CFormFeedback>
             </div>
             </div>
           
           </Col>
           </Row>
          
-        </Modal.Body>
+        </Modal.Body>              
         <Modal.Footer>
           <Button variant="secondary"  onClick={() => setLgShow(false)}>Cancel</Button>
           <Button variant="primary" type='submit'>Submit</Button>
+          <Button variant="info" onClick={()=>generateLink()}>Send Link</Button>
         </Modal.Footer>
         </CForm>
       </Modal>
-        {/* modal */}
+    {/* modal */}
     </div>
   )
 }

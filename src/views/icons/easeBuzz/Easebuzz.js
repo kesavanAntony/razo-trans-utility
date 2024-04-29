@@ -142,6 +142,53 @@ const Easebuzz= () => {
         .catch((err) => console.log(err))
     }
   }
+
+  const generateLink = () =>{
+   
+    const validateErrors={} ;
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+if (!value.email.trim()) {
+ validateErrors.email = 'email is required'
+   }
+   else if(!regex.test(value.email)){
+     validateErrors.email = 'enter valid email'
+   }
+   if (!value.remark.trim()) {
+     validateErrors.remark = 'remark is required'
+   }
+   if (!value.mobileNumber.trim()) {
+     validateErrors.mobileNumber = 'mobile number is required'
+   }
+
+   if (!value.amount.trim()) {
+     validateErrors.amount = 'amount is required'
+   } 
+   else if (value.amount < 10) {
+     validateErrors.amount = 'amount must be above 10'
+   }
+   updateFormError(validateErrors)
+
+
+
+
+if (Object.keys(validateErrors).length === 0 ) {
+
+
+  axios
+  .post('https://backend-razo.vercel.app/payment/link', value)
+  .then((res) => {
+    const result = res.data
+   alert("payment link sent...")
+    console.log(result)
+  })
+  .catch((err)=>{
+    alert("something went to wrong")
+console.log(err)
+  })
+ 
+  }
+}
+
   return (
     <div>
        <Navbar expand="lg" className="bg-body-tertiary">
@@ -224,8 +271,8 @@ const Easebuzz= () => {
           <div className="shadow p-3 mb-5 bg-white rounded">
             <div className="fw-bold text-light bg-black p-2 rounded d-flex flex-row justify-content-between ">
               <h5 className="align-center">EaseBuzz PG Request</h5>
-              <button className="btn btn-light fw-medium rounded" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>NEW REQUEST</button>
-              <button className="btn btn-light fw-medium rounded" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>Generate Payment Link</button>
+              <button className="btn btn-light fw-medium rounded btn-sm" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>NEW REQUEST</button>
+              <button className="btn btn-light fw-medium rounded btn-sm" onClick={() => setLgShow(true)}><CIcon icon={cilPlus} className='me-2'/>Generate Payment Link</button>
             </div>
             <Table responsive>
               <thead>
@@ -328,6 +375,7 @@ const Easebuzz= () => {
         <Modal.Footer>
           <Button variant="secondary"  onClick={() => setLgShow(false)}>Cancel</Button>
           <Button variant="primary" type='submit'>Submit</Button>
+          <Button variant="info" onClick={()=>generateLink()}>Send Link</Button>
         </Modal.Footer>
         </CForm>
       </Modal>
