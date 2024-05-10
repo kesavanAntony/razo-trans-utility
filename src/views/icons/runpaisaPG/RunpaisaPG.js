@@ -76,7 +76,7 @@ const RunpaisaPG= () => {
           console.log(result.amount)
 
           var options = {
-            key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
+            key: 'rzp_live_yJSNi3soNEYWt2', // Enter the Key ID generated from the Dashboard
             amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             currency: result.currency,
             name: 'Razo Trans Utility', //your business name

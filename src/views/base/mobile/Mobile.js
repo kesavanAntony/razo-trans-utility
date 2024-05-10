@@ -136,85 +136,95 @@ console.log(err)
     
 
     if (Object.keys(validateErrors).length === 0 ) {
-        
-    
       axios
-        .post('https://backend-razo.vercel.app/order', value)
-        .then((res) => {
-          const result = res.data
-          console.log(result)
-          
-
-          var options = {
-            key: 'rzp_live_KxLmp2zN6kUt9n', // Enter the Key ID generated from the Dashboard
-            amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            currency: result.currency,
-            name: 'Razo Trans Utility', //your business name
-            description: 'Test Transaction',
-            image:"https://app.gemoo.com/share/image-annotation/627135246211112960?codeId=vJ32leWg3Jjao&origin=imageurlgenerator",
-            order_id: result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            handler: async function (response) {
-              const body = {
-                ...response,
-              }
-              const validateRes = await fetch('https://backend-razo.vercel.app/order/validate', {
-                method: 'POST',
-                body: JSON.stringify(body),
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-              })
-              const jsonRes = await validateRes.json()
-              console.log(jsonRes)
-             if(jsonRes.msg === "success"){
-             
-               axios.post("https://backend-razo.vercel.app/mobile/recharge",value)
-               .then((response)=>{
-               const result = response.data;
-               if(result.message === "success"){
-                alert("recharged successfully");
-                navigate("/base/mobile")
-                listMobileRecharge();
+          .post('https://backend-razo.vercel.app/order', value)
+          .then((res) => {
+            const result = res.data
+            console.log(result)
+            console.log(result.amount)
+  
+            var options = {
+              key: 'rzp_live_yJSNi3soNEYWt2', // Enter the Key ID generated from the Dashboard
+              amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+              currency: result.currency,
+              name: 'Razo Trans Utility', //your business name
+              description: 'Test Transaction',
+              image:"https://app.gemoo.com/share/image-annotation/627135246211112960?codeId=vJ32leWg3Jjao&origin=imageurlgenerator",
+              order_id: result.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+              handler: async function (response) {
+                const body = {
+                  ...response,
+                }
+                const validateRes = await fetch('https://backend-razo.vercel.app/order/validate', {
+                  method: 'POST',
+                  body: JSON.stringify(body),
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                })
+                const jsonRes = await validateRes.json()
+                console.log(jsonRes)
+                if(jsonRes.msg === "success"){
+               
+                 axios.post("https://backend-razo.vercel.app/dth/recharge",value)
+                 .then((response)=>{
+                 const result = response.data;
+                 if(result.message === "success"){
+                  alert("recharged successfully");
+                  navigate("/base/mobile")
+                  listMobileRecharge();
+                 }
+                 })
+                 .catch((error)=>{
+                  console.log(error)
+                 })
                }
-               })
-               .catch((error)=>{
-                console.log(error)
-               })
-             }
-            },
-            prefill: {
-              //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-              name: 'razo', //your customer's name
-              email: 'xyz@example.com',
-              contact: value.mobileNumber, //Provide the customer's phone number for better conversion rates
-            },
-            notes: {
-              address: 'Razorpay Corporate Office',
-            },
-            theme: {
-              color: '#3399cc',
-            },
-          }
-
-          var rzp1 = new window.Razorpay(options)
-          rzp1.on('payment.failed', function (response) {
-              alert("payment Failed")
-              navigate("/base/mobile")
-            // alert(response.error.code)
-            // alert(response.error.description)
-            // alert(response.error.source)
-            // alert(response.error.step)
-            // alert(response.error.reason)
-            // alert(response.error.metadata.order_id)
-            // alert(response.error.metadata.payment_id)
+              //  if(jsonRes.msg === "success"){
+              //   axios.post("https://backend-razo.vercel.app/mobile/recharge/payment",jsonRes)
+              //   .then((response)=>{
+              //   const result = response.data;
+              //   if(result.message === "success"){
+              //    alert("payement successs");
+              //    listMobileRecharge();
+              //   }
+              //   })
+              //   .catch((error)=>{
+              //    console.log(error)
+              //   })
+              // }
+              },
+              prefill: {
+                //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+                name: 'razo', //your customer's name
+                email: 'xyz@example.com',
+                contact: '044-45270126', //Provide the customer's phone number for better conversion rates
+              },
+              notes: {
+                address: 'Razorpay Corporate Office',
+              },
+              theme: {
+                color: '#3399cc',
+              },
+            }
+  
+            var rzp1 = new window.Razorpay(options)
+            rzp1.on('payment.failed', function (response) {
+                alert("payment Failed")
+                navigate("/base/mobile")
+              // alert(response.error.code)
+              // alert(response.error.description)
+              // alert(response.error.source)
+              // alert(response.error.step)
+              // alert(response.error.reason)
+              // alert(response.error.metadata.order_id)
+              // alert(response.error.metadata.payment_id)
+            })
+            rzp1.open()
+            e.preventDefault()
           })
-          rzp1.open()
-          e.preventDefault()
-        })
-        .catch((err) => console.log("something went to wrong"))
+          .catch((err) => console.log(err))
+      }
     }
-  }
-
 
   return (
     <div>
