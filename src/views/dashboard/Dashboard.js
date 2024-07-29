@@ -219,9 +219,9 @@ const Dashboard = () => {
                         <CIcon icon={cilPhone} className="me-2" />
                         Call Us:
                       </h6>
-                      <p className="">9941021198</p>
+                      <p className="">+91 99410 21198</p>
                       <h6 className='p-1'><CIcon icon={cilSend} className="me-2" />Email Us:</h6>
-                      <p className="">xyz@gmail.com</p>
+                      <p className="">razotransutility@gmail.com</p>
                     </td>
                   </tr>
                   </tbody>
