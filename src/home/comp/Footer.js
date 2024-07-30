@@ -4,7 +4,7 @@ import { CFooter } from '@coreui/react'
 const Footer = () => {
   return (
 
-     <CFooter className='fixed-bottom bg-dark text-light'>
+     <CFooter className='bg-dark text-light'>
       <div className='col-md-6'>
         <a href="https://razo.co.in" target="_blank" rel="noopener noreferrer" className='text-white'>
           Razo Trans Utility Pvt Ltd

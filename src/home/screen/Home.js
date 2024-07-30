@@ -56,6 +56,74 @@ const Home = () => {
             </div>
           </div>
         </div>
+           <div className='container'>
+     <div class="jumbotron">
+          <h1 class="">Services</h1>
+          <p className='fs-5'>Mobile Recharge, Wallet Recharge, and DTH Recharge Services</p>
+          <p class="">
+          Welcome to Razo Trans Utility, your one-stop solution for all your recharge needs. Our platform provides a seamless and secure way to recharge your mobile, wallet, and DTH services. Enjoy the convenience and ease of recharging from anywhere, anytime.
+          </p>
+          <hr class="my-4" />
+
+          <h4>Mobile Recharge</h4>
+          <p>
+          Stay connected with our fast and easy mobile recharge service. Whether you need a prepaid or postpaid recharge, we have got you covered. We support all major telecom operators, ensuring that you can recharge your mobile number without any hassle.
+          </p>
+          <hr class="my-4" />
+          <ul>
+            <li><b>Instant Recharge :</b> Get your recharge done in seconds.</li>
+            <li><b>Wide Network Coverage :</b> Supports all major telecom operators.</li>
+            <li><b>Safe and Secure :</b> Your transactions are protected with advanced security measures.</li>
+            <li><b>Pricing :</b>
+            <ul>
+              <li><b>Prepaid Plans :</b> Starting from ₹10 to ₹1,500.</li>
+              <li><b>Postpaid Bills :</b> Pay your bill amount as per the invoice.</li>
+            </ul>
+            </li>
+            
+          </ul>
+          {/* 2 */}
+          <h4>Wallet Recharge</h4>
+          <p>
+          Top up your digital wallet with ease using our wallet recharge service. Whether it's for shopping, paying bills, or transferring money, keep your wallet ready for any transaction.
+          </p>
+          <hr class="my-4" />
+          <ul>
+            <li><b>Quick Top-Up :</b> Recharge your wallet instantly.</li>
+            <li><b>Multiple Payment Options :</b> Use debit/credit cards, net banking, or UPI.</li>
+            <li><b>Secure Transactions :</b> We prioritize your security with encrypted transactions.</li>
+            <li><b>Pricing :</b>
+            <ul>
+              <li><b>Minimum Recharge :</b> ₹50.</li>
+              <li><b>Maximum Recharge :</b> ₹10,000.</li>
+            </ul>
+            </li>
+            
+          </ul>
+            {/* 3 */}
+
+            <h4>DTH Recharge</h4>
+          <p>
+          Enjoy uninterrupted entertainment with our DTH recharge service. We support all major DTH service providers, making it simple to recharge your account and keep your favorite shows and channels active.
+          </p>
+          <hr class="my-4" />
+          <ul>
+            <li><b>Instant Activation :</b> Your DTH account is recharged instantly.</li>
+            <li><b>Broad Provider Support :</b> Recharge services for all major DTH providers.</li>
+            <li><b>Convenient and Reliable :</b> Easy and quick recharge process.</li>
+            <li><b>Pricing :</b>
+            <ul>
+              <li><b>Basic Plans :</b> Starting from ₹99 per month.</li>
+              <li><b>Premium Plans :</b> Up to ₹1,500 per month.</li>
+            </ul>
+            </li>
+            
+          </ul>
+
+        </div>
+           </div>
+   
+
         <Footer />
       </div>
     </div>
