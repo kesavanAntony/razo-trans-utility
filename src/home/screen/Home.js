@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../comp/Header'
 import Footer from '../comp/Footer'
+import { Link } from 'react-router-dom'
 Footer
 
 const Home = () => {
@@ -56,7 +57,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-           <div className='container'>
+           <div className='container my-3'>
      <div class="jumbotron">
           <h1 class="">Services</h1>
           <p className='fs-5'>Mobile Recharge, Wallet Recharge, and DTH Recharge Services</p>
@@ -65,7 +66,7 @@ const Home = () => {
           </p>
           <hr class="my-4" />
 
-          <h4>Mobile Recharge</h4>
+          <h4 className='my-3'>Mobile Recharge</h4>
           <p>
           Stay connected with our fast and easy mobile recharge service. Whether you need a prepaid or postpaid recharge, we have got you covered. We support all major telecom operators, ensuring that you can recharge your mobile number without any hassle.
           </p>
@@ -82,8 +83,9 @@ const Home = () => {
             </li>
             
           </ul>
+          <Link class="btn btn-primary" to="/login" role="button">Buy Now</Link>
           {/* 2 */}
-          <h4>Wallet Recharge</h4>
+          <h4 className='my-3'>Wallet Recharge</h4>
           <p>
           Top up your digital wallet with ease using our wallet recharge service. Whether it's for shopping, paying bills, or transferring money, keep your wallet ready for any transaction.
           </p>
@@ -101,8 +103,8 @@ const Home = () => {
             
           </ul>
             {/* 3 */}
-
-            <h4>DTH Recharge</h4>
+            <Link class="btn btn-primary" to="/login" role="button">Buy Now</Link>
+            <h4 className='my-3'>DTH Recharge</h4>
           <p>
           Enjoy uninterrupted entertainment with our DTH recharge service. We support all major DTH service providers, making it simple to recharge your account and keep your favorite shows and channels active.
           </p>
@@ -119,7 +121,7 @@ const Home = () => {
             </li>
             
           </ul>
-
+          <Link class="btn btn-primary" to="/login" role="button">Buy Now</Link>
         </div>
            </div>
    
