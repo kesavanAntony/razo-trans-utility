@@ -1,4 +1,4 @@
-import { cilCheck, cilPhone, cilReload, cilXCircle,cilSend } from '@coreui/icons'
+import { cilCheck, cilPhone, cilReload, cilXCircle,cilSend, cilLocationPin } from '@coreui/icons'
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import CIcon from '@coreui/icons-react'
@@ -209,21 +209,21 @@ const Dashboard = () => {
                   <tbody>
                   <tr className="bg-info text-light">
                     <td className="p-2 ">
-                      <img src={require('../img/desk.png')} alt="" width={90} />
-                      <h5 className="fw-medium">Timing - 10 AM to 7 PM</h5>
+                      <img src={require('../img/desk.png')} alt="" width={50} />
+                      <p className="fw-medium">Timing - 10 AM to 7 PM</p>
                     </td>
                   </tr>
                   <tr>
                     <td>
                       <h6 className='p-1'>
-                        <CIcon icon={cilPhone} className="me-2" />
+                        <CIcon icon={cilPhone} className="me-2"/>
                         Call Us:
                       </h6>
-                      <p className="">+91 99410 21198</p>
+                      <p className="mb-0 fs-6">+91 99410 21198</p>
                       <h6 className='p-1'><CIcon icon={cilSend} className="me-2" />Email Us:</h6>
-                      <p className="">razotransutility@gmail.com</p>
-                      <h6 className='p-1'><CIcon icon={cilSend} className="me-2" />Address:</h6>
-                      <p className="">New No.32/2, Old No.137/2, Velachery Road, Little Mount, saidapet, Chennai - 600015</p>
+                      <p className="mb-0 fs-6">razotransutility@gmail.com</p>
+                      <h6 className='p-1'><CIcon icon={cilLocationPin} className="me-2" />Address:</h6>
+                      <p className="mb-0 fs-6">New No.32/2, Old No.137/2, Velachery Road, Little Mount, saidapet, Chennai - 600015</p>
                     </td>
                   </tr>
                   </tbody>
