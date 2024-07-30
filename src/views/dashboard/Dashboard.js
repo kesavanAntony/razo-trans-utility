@@ -208,7 +208,7 @@ const Dashboard = () => {
                 <table className="w-100 border">
                   <tbody>
                   <tr className="bg-info text-light">
-                    <td className="p-2">
+                    <td className="p-2 ">
                       <img src={require('../img/desk.png')} alt="" width={90} />
                       <h5 className="fw-medium">Timing - 10 AM to 7 PM</h5>
                     </td>
@@ -222,6 +222,8 @@ const Dashboard = () => {
                       <p className="">+91 99410 21198</p>
                       <h6 className='p-1'><CIcon icon={cilSend} className="me-2" />Email Us:</h6>
                       <p className="">razotransutility@gmail.com</p>
+                      <h6 className='p-1'><CIcon icon={cilSend} className="me-2" />Address:</h6>
+                      <p className="">New No.32/2, Old No.137/2, Velachery Road, Little Mount, saidapet, Chennai - 600015</p>
                     </td>
                   </tr>
                   </tbody>

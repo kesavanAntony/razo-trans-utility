@@ -34,7 +34,7 @@ const ProfileSetting = () => {
             <div>
             <input
                 type="text"
-                placeholder="Enter Name" value="victor"
+                placeholder="Enter Name" value="Razo Trans Utility Limited"
                 className="rounded  text-dark w-100"
               />  
               </div>
@@ -91,7 +91,7 @@ const ProfileSetting = () => {
                 type="text"
                 placeholder="Enter Address"
                 className="rounded  text-dark w-100"
-                value="NO.3 2ND MAIN ROAD RAHESH NAGAR PALLIKARNAI"
+                value="New No.32/2, Old No.137/2, Velachery Road, Little Mount, saidapet, Chennai - 600015"
               />  
               </div>
             </div>
@@ -104,7 +104,7 @@ const ProfileSetting = () => {
                 type="text"
                 placeholder="Enter Mobile"
                 className="rounded  text-dark w-100"
-                value="9941021198"
+                value="+91 99410 21198"
               />
             </div>
             </div>
@@ -116,7 +116,7 @@ const ProfileSetting = () => {
                 type="text"
                 placeholder="Enter Reference Number"
                 className="rounded  text-dark w-100" required
-                value="Kancheepuram"
+                value="Chennai"
               />  
               </div>
               
@@ -130,7 +130,7 @@ const ProfileSetting = () => {
                 type="text"
                 placeholder="Enter Email"
                 className="rounded  text-dark w-100"
-                value="feminamktg@gmail.com"
+                value="razotransutility@gmail.com"
               />
             </div>
             </div>
@@ -170,18 +170,6 @@ const ProfileSetting = () => {
               />  
               </div>
             </div>
-              
-            <div className="p-2">
-            <label className="h6 ">Adhaarcard Number</label>
-            <div>
-            <input
-                type="text"
-                placeholder="Enter Adhaarcard Number"
-                className="rounded  text-dark w-100"
-                value="965508514259" disabled
-              />  
-              </div>
-            </div>
           </Col>
           <Col md={4} sm={12}>
             <div className="p-2">
@@ -191,7 +179,7 @@ const ProfileSetting = () => {
                 type="text"
                 placeholder="Enter Value"
                 className="rounded  text-dark w-100"
-                
+                value="33AANCR2103B1Z1" disabled
               />
             </div>
             </div>
@@ -204,7 +192,7 @@ const ProfileSetting = () => {
                 type="text"
                 placeholder="Enter Pancard Number"
                 className="rounded  text-dark w-100"
-                value="AJSPM1452F" disabled
+                value="AANCR2103B" disabled
               />
             </div>
             </div>
