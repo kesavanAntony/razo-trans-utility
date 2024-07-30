@@ -13,6 +13,7 @@ import Returnrefund from './home/screen/Returnrefund';
 import Contact from './home/screen/Contact';
 import Privacy from './home/screen/Privacy';
 import DataSharing from './DataSharing';
+import Term from './home/screen/Term';
 
 // const loading = (
 //   <div className="pt-3 text-center">
@@ -42,6 +43,7 @@ const App =() => {
           <Routes> 
             <Route  exact path="" name="Home" element={<Home />} />
             <Route  exact path="/login" name="Login Page" element={<Login />} />
+            <Route  exact path="/pdf" name="Pdf Page" element={<Term />} />
             <Route  exact path="/privacy" name="Shipping Page" element={<Privacy />} />
             
             <Route  exact path="/terms" name="Terms Page" element={<Termcondition />} />

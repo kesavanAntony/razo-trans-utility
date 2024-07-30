@@ -44,7 +44,6 @@ const Mobile = () => {
     .then((res) => {
       const result = res.data
       updateList(result)
-      console.log(result)
     })
     .catch((error) => {
       console.log(error)
@@ -94,7 +93,7 @@ if (Object.keys(validateErrors).length === 0 ) {
   .then((res) => {
     const result = res.data
    alert("payment link sent...")
-    console.log(result)
+   
   })
   .catch((err)=>{
     alert("something went to wrong")
@@ -140,8 +139,7 @@ console.log(err)
           .post('https://backend-razo.vercel.app/order', value)
           .then((res) => {
             const result = res.data
-            console.log(result)
-            console.log(result.amount)
+            
   
             var options = {
               key: 'rzp_live_yJSNi3soNEYWt2', // Enter the Key ID generated from the Dashboard
@@ -163,7 +161,7 @@ console.log(err)
                   },
                 })
                 const jsonRes = await validateRes.json()
-                console.log(jsonRes)
+              
                 if(jsonRes.msg === "success"){
                
                  axios.post("https://backend-razo.vercel.app/dth/recharge",value)

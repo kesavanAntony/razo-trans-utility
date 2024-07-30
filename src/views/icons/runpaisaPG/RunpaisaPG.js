@@ -72,8 +72,7 @@ const RunpaisaPG= () => {
         .post('https://backend-razo.vercel.app/order', value)
         .then((res) => {
           const result = res.data
-          console.log(result)
-          console.log(result.amount)
+       
 
           var options = {
             key: 'rzp_live_yJSNi3soNEYWt2', // Enter the Key ID generated from the Dashboard
@@ -96,7 +95,7 @@ const RunpaisaPG= () => {
               })
               const jsonRes = await validateRes.json()
              if(jsonRes.msg === "success"){
-              console.log(jsonRes)
+       
                axios.post("https://backend-razo.vercel.app/wallet/easebuzzpg",value)
                .then((response)=>{
                const result = response.data;

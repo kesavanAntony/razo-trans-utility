@@ -91,9 +91,7 @@ const LoadWallet = () => {
         .post('https://backend-razo.vercel.app/order', value)
         .then((res) => {
           const result = res.data
-          console.log(result)
-          console.log(result.amount)
-
+      
           var options = {
             key: 'rzp_live_yJSNi3soNEYWt2', // Enter the Key ID generated from the Dashboard
             amount: result.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -114,7 +112,7 @@ const LoadWallet = () => {
                 },
               })
               const jsonRes = await validateRes.json()
-              console.log(jsonRes)
+          
              if(jsonRes.msg === "success"){
              
                axios.post("https://backend-razo.vercel.app/loadwallet",value)

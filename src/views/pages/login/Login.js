@@ -59,7 +59,7 @@ const loadRender = () =>{
     } 
     else {
       setValidated(true)
-      console.log(value)
+   
      const url = 'https://backend-razo.vercel.app/login'
       axios
         .post(url, value)

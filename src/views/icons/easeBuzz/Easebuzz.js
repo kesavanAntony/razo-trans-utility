@@ -96,7 +96,7 @@ const Easebuzz= () => {
               })
               const jsonRes = await validateRes.json()
              if(jsonRes.msg === "success"){
-              console.log(jsonRes)
+            
                axios.post("https://backend-razo.vercel.app/wallet/easebuzzpg",value)
                .then((response)=>{
                const result = response.data;
@@ -179,7 +179,7 @@ if (Object.keys(validateErrors).length === 0 ) {
   .then((res) => {
     const result = res.data
    alert("payment link sent...")
-    console.log(result)
+ 
   })
   .catch((err)=>{
     alert("something went to wrong")
