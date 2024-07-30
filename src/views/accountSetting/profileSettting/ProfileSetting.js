@@ -34,7 +34,7 @@ const ProfileSetting = () => {
             <div>
             <input
                 type="text"
-                placeholder="Enter Name" value="Razo Trans Utility Limited"
+                placeholder="Enter Name" value="Razo Trans Utility"
                 className="rounded  text-dark w-100"
               />  
               </div>
@@ -165,7 +165,7 @@ const ProfileSetting = () => {
             <div>
             <input
                 type="text"
-                placeholder="Enter Shop Name" value="FEMINA MARKETING"
+                placeholder="Enter Shop Name" value="Razo Trans Utility"
                 className="rounded  text-dark w-100"
               />  
               </div>
